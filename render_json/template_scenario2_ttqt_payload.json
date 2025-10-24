@@ -1,6 +1,86 @@
 {
   "title": "SO SÁNH PHÍ CHUYỂN TIỀN TTQT: GÓI PHÍ & PHÍ LẺ",
   "currency": "USD",
+  "data": {
+    "amount": {
+      "value": 1000000,
+      "source": "user",
+      "type": "number",
+      "default": 1000000
+    },
+    "fee_rate_pct": {
+      "value": 0.22,
+      "source": "user",
+      "type": "number",
+      "default": 0.22
+    },
+    "fee_amount": {
+      "value": 2200.0,
+      "source": "calc",
+      "type": "number",
+      "formula": "amount * fee_rate_pct / 100"
+    },
+    "tx_count": {
+      "value": 20,
+      "source": "user",
+      "type": "number",
+      "default": 20
+    },
+    "swift_unit": {
+      "value": 8,
+      "source": "user",
+      "type": "number",
+      "default": 8
+    },
+    "swift_total": {
+      "value": 160,
+      "source": "calc",
+      "type": "number",
+      "formula": "tx_count * swift_unit"
+    },
+    "grand_total_opt1": {
+      "value": 2360.0,
+      "source": "calc",
+      "type": "number",
+      "formula": "fee_amount + swift_total"
+    },
+    "pack6_amount": {
+      "value": 1000000,
+      "source": "user",
+      "type": "number",
+      "default": 1000000
+    },
+    "pack12_amount": {
+      "value": 1000000,
+      "source": "user",
+      "type": "number",
+      "default": 1000000
+    },
+    "pack6_duration": {
+      "value": 6,
+      "source": "user",
+      "type": "number",
+      "default": 6
+    },
+    "pack12_duration": {
+      "value": 12,
+      "source": "user",
+      "type": "number",
+      "default": 12
+    },
+    "pack6_fee": {
+      "value": 1300,
+      "source": "user",
+      "type": "number",
+      "default": 1300
+    },
+    "pack12_fee": {
+      "value": 1500,
+      "source": "user",
+      "type": "number",
+      "default": 1500
+    }
+  },
   "inputs": {
     "amount_usd": 1000000,
     "fee_rate_pct": "0.22%",
@@ -101,6 +181,12 @@
             }
           ]
         }
+      ],
+      "col_defs": [
+        {
+          "key": "main",
+          "title": ""
+        }
       ]
     },
     {
@@ -198,9 +284,6 @@
     }
   ],
   "notes": [
-    "KH có doanh số chuyển tiền là 1 triệu USD, so sánh mức phí theo gói phí và biểu phí.",
-    "Phương án 2 tối ưu hơn phương án 1.",
-    "Sử dụng Gói phí 6 tháng: tối ưu hơn 1,060 USD.",
-    "Sử dụng Gói phí 12 tháng: tối ưu hơn 860 USD."
+    "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
   ]
 }

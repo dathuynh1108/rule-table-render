@@ -1,6 +1,110 @@
 {
   "title": "DEMO KỊCH BẢN 1 - TƯ VẤN PHƯƠNG ÁN TÁI TÀI TRỢ",
   "currency": "VND",
+  "data": {
+    "loan_amount": {
+      "value": 2000000000,
+      "source": "user",
+      "type": "number",
+      "default": 2000000000
+    },
+    "loan_term_years": {
+      "value": 3,
+      "source": "user",
+      "type": "number",
+      "default": 3
+    },
+    "acb_rate_pct": {
+      "value": 7,
+      "source": "user",
+      "type": "number",
+      "default": 7
+    },
+    "existing_rate_pct": {
+      "value": 10,
+      "source": "user",
+      "type": "number",
+      "default": 10
+    },
+    "penalty_pct": {
+      "value": 2,
+      "source": "user",
+      "type": "number",
+      "default": 2
+    },
+    "loan_term_months": {
+      "value": 36,
+      "source": "calc",
+      "type": "number",
+      "formula": "loan_term_years * 12"
+    },
+    "acb_principal_monthly": {
+      "value": 55555556,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount / loan_term_months)"
+    },
+    "acb_interest_monthly": {
+      "value": 11666667,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount * acb_rate_pct / 100 / 12)"
+    },
+    "acb_interest_year": {
+      "value": 140000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount * acb_rate_pct / 100)"
+    },
+    "acb_interest_total": {
+      "value": 420000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(acb_interest_year * loan_term_years)"
+    },
+    "acb_penalty_fee": {
+      "value": 40000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount * penalty_pct / 100)"
+    },
+    "acb_total_year1": {
+      "value": 180000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "acb_interest_year + acb_penalty_fee"
+    },
+    "acb_total_total": {
+      "value": 460000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "acb_interest_total + acb_penalty_fee"
+    },
+    "existing_principal_monthly": {
+      "value": 55555556,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount / loan_term_months)"
+    },
+    "existing_interest_monthly": {
+      "value": 16666667,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount * existing_rate_pct / 100 / 12)"
+    },
+    "existing_interest_year": {
+      "value": 200000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(loan_amount * existing_rate_pct / 100)"
+    },
+    "existing_interest_total": {
+      "value": 600000000,
+      "source": "calc",
+      "type": "number",
+      "formula": "round(existing_interest_year * loan_term_years)"
+    }
+  },
   "inputs": {
     "loan_amount_vnd": 2000000000,
     "loan_term_years": 3,
@@ -140,6 +244,12 @@
             }
           ]
         }
+      ],
+      "col_defs": [
+        {
+          "key": "main",
+          "title": ""
+        }
       ]
     },
     {
@@ -255,13 +365,16 @@
             }
           ]
         }
+      ],
+      "col_defs": [
+        {
+          "key": "main",
+          "title": ""
+        }
       ]
     }
   ],
   "notes": [
-    "Khách hàng đang vay 500 triệu đồng ở ngân hàng khác, thời gian vay 3 năm, so sánh phương án vay tái tài trợ của ACB và ngân hàng khác.",
-    "Phương án 1 tối ưu hơn phương án 2.",
-    "Khách hàng tiết kiệm được 20,000,000 VND ngay từ năm 1.",
-    "Khách hàng tiết kiệm được 140,000,000 VND trong suốt thời gian vay."
+    "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
   ]
 }

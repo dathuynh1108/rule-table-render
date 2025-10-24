@@ -142,6 +142,12 @@
       {
         "id": "refinance_plan_acb",
         "title": "PHƯƠNG ÁN 1: ACB TÁI TÀI TRỢ",
+        "col_defs": [
+          {
+            "key": "main",
+            "title": ""
+          }
+        ],
         "rows": [
           {
             "id": "hdr_a",
@@ -287,6 +293,12 @@
       {
         "id": "refinance_plan_existing",
         "title": "PHƯƠNG ÁN 2: DUY TRÌ KHOẢN VAY HIỆN HỮU",
+        "col_defs": [
+          {
+            "key": "main",
+            "title": ""
+          }
+        ],
         "rows": [
           {
             "id": "hdr_a_existing",
@@ -413,9 +425,6 @@
     ]
   },
   "notes": [
-    "Khách hàng đang vay 500 triệu đồng ở ngân hàng khác, thời gian vay 3 năm, so sánh phương án vay tái tài trợ của ACB và ngân hàng khác.",
-    "Phương án 1 tối ưu hơn phương án 2.",
-    "Khách hàng tiết kiệm được 20,000,000 VND ngay từ năm 1.",
-    "Khách hàng tiết kiệm được 140,000,000 VND trong suốt thời gian vay."
+    "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
   ]
 }

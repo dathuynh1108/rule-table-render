@@ -118,6 +118,12 @@
       {
         "id": "opt1",
         "title": "PHƯƠNG ÁN 1: THANH TOÁN TỪNG LẦN",
+        "col_defs": [
+          {
+            "key": "main",
+            "title": ""
+          }
+        ],
         "rows": [
           {
             "id": "hdr_a",
@@ -325,9 +331,6 @@
     ]
   },
   "notes": [
-    "KH có doanh số chuyển tiền là 1 triệu USD, so sánh mức phí theo gói phí và biểu phí.",
-    "Phương án 2 tối ưu hơn phương án 1.",
-    "Sử dụng Gói phí 6 tháng: tối ưu hơn 1,060 USD.",
-    "Sử dụng Gói phí 12 tháng: tối ưu hơn 860 USD."
+    "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
   ]
 }

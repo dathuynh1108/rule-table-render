@@ -30,10 +30,10 @@ class TemplateRenderer:
         config = self._load_config()
         values = self._compute_values(config.get("fields", []))
         layout = config.get("layout", {})
-
         return {
             "title": config.get("title"),
             "currency": config.get("currency"),
+            "data": self._build_field_data(config, values),
             "inputs": self._build_inputs(config, values),
             "tables": self._build_tables(layout, values),
             "notes": layout.get("notes") or config.get("notes", []),
@@ -205,6 +205,23 @@ class TemplateRenderer:
             row["children"] = [self._build_row(child_cfg, values) for child_cfg in children_cfg]
 
         return row
+
+    def _build_field_data(
+        self, config: Dict[str, Any], values: Dict[str, Any]
+    ) -> Dict[str, Dict[str, Any]]:
+        data: Dict[str, Dict[str, Any]] = {}
+        for field in config.get("fields", []):
+            field_id = field["id"]
+            data[field_id] = {
+                "value": values.get(field_id),
+                "source": field.get("source", "user"),
+                "type": field.get("type"),
+            }
+            if "default" in field:
+                data[field_id]["default"] = field["default"]
+            if "formula" in field:
+                data[field_id]["formula"] = field["formula"]
+        return data
 
 
 def _auto_cast(value: str) -> Any:
