@@ -1,0 +1,333 @@
+{
+  "title": "SO SÁNH PHÍ CHUYỂN TIỀN TTQT: GÓI PHÍ & PHÍ LẺ",
+  "currency": "USD",
+  "fields": [
+    {
+      "id": "amount",
+      "type": "number",
+      "source": "user",
+      "default": 1000000
+    },
+    {
+      "id": "fee_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 0.22
+    },
+    {
+      "id": "fee_amount",
+      "type": "number",
+      "source": "calc",
+      "formula": "amount * fee_rate_pct / 100"
+    },
+    {
+      "id": "tx_count",
+      "type": "number",
+      "source": "user",
+      "default": 20
+    },
+    {
+      "id": "swift_unit",
+      "type": "number",
+      "source": "user",
+      "default": 8
+    },
+    {
+      "id": "swift_total",
+      "type": "number",
+      "source": "calc",
+      "formula": "tx_count * swift_unit"
+    },
+    {
+      "id": "grand_total_opt1",
+      "type": "number",
+      "source": "calc",
+      "formula": "fee_amount + swift_total"
+    },
+    {
+      "id": "pack6_amount",
+      "type": "number",
+      "source": "user",
+      "default": 1000000
+    },
+    {
+      "id": "pack12_amount",
+      "type": "number",
+      "source": "user",
+      "default": 1000000
+    },
+    {
+      "id": "pack6_duration",
+      "type": "number",
+      "source": "user",
+      "default": 6
+    },
+    {
+      "id": "pack12_duration",
+      "type": "number",
+      "source": "user",
+      "default": 12
+    },
+    {
+      "id": "pack6_fee",
+      "type": "number",
+      "source": "user",
+      "default": 1300
+    },
+    {
+      "id": "pack12_fee",
+      "type": "number",
+      "source": "user",
+      "default": 1500
+    }
+  ],
+  "inputs": [
+    {
+      "key": "amount_usd",
+      "field": "amount",
+      "format": "money"
+    },
+    {
+      "key": "fee_rate_pct",
+      "field": "fee_rate_pct",
+      "format": "percent"
+    },
+    {
+      "key": "transactions",
+      "field": "tx_count",
+      "format": "integer"
+    },
+    {
+      "key": "swift_per_tx",
+      "field": "swift_unit",
+      "format": "money"
+    },
+    {
+      "key": "pack6_fee_usd",
+      "field": "pack6_fee",
+      "format": "money"
+    },
+    {
+      "key": "pack12_fee_usd",
+      "field": "pack12_fee",
+      "format": "money"
+    }
+  ],
+  "layout": {
+    "tables": [
+      {
+        "id": "opt1",
+        "title": "PHƯƠNG ÁN 1: THANH TOÁN TỪNG LẦN",
+        "rows": [
+          {
+            "id": "hdr_a",
+            "type": "label",
+            "label": "A. PHÍ CHUYỂN TIỀN",
+            "cells": {},
+            "children": [
+              {
+                "id": "amount",
+                "label": "Doanh số chuyển tiền (USD) (*)",
+                "extra_label": {
+                  "text": "USD:"
+                },
+                "cells": {
+                  "main": {
+                    "field": "amount",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "fee_rate",
+                "label": "Phí chuyển tiền (USD) (*) (1)",
+                "extra_label": {
+                  "field": "fee_rate_pct",
+                  "format": "percent"
+                },
+                "cells": {
+                  "main": {
+                    "field": "fee_amount",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_b",
+            "type": "label",
+            "label": "B. ĐIỆN PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "tx_count",
+                "label": "Số lượng giao dịch (*)",
+                "cells": {
+                  "main": {
+                    "field": "tx_count",
+                    "editable": true,
+                    "format": "integer"
+                  }
+                }
+              },
+              {
+                "id": "swift_unit",
+                "label": "Điện phí/ giao dịch (USD) (*)",
+                "cells": {
+                  "main": {
+                    "field": "swift_unit",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "swift_total",
+                "label": "Điện phí (USD) (2)",
+                "cells": {
+                  "main": {
+                    "field": "swift_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_total_opt1",
+            "type": "label",
+            "label": "C. TỔNG PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "grand_total_opt1",
+                "type": "total",
+                "label": "Mức phí theo biểu phí (USD) = (1) + (2)",
+                "cells": {
+                  "main": {
+                    "field": "grand_total_opt1",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "opt2",
+        "title": "PHƯƠNG ÁN 2: THANH TOÁN THEO GÓI PHÍ",
+        "col_defs": [
+          {
+            "key": "pack6",
+            "title": "PACK1000",
+            "subtitle": "6 tháng"
+          },
+          {
+            "key": "pack12",
+            "title": "PACK1000",
+            "subtitle": "12 tháng"
+          }
+        ],
+        "rows": [
+          {
+            "id": "hdr_pkg",
+            "type": "label",
+            "label": "Gói phí",
+            "cells": {},
+            "children": [
+              {
+                "id": "pkg_amount",
+                "label": "Doanh số chuyển tiền (USD) (*)",
+                "extra_label": {
+                  "text": "USD:"
+                },
+                "cells": {
+                  "pack6": {
+                    "field": "pack6_amount",
+                    "editable": true,
+                    "format": "money"
+                  },
+                  "pack12": {
+                    "field": "pack12_amount",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "pkg_duration",
+                "label": "Thời hạn của Gói phí (tháng)",
+                "cells": {
+                  "pack6": {
+                    "field": "pack6_duration",
+                    "editable": true,
+                    "format": "integer"
+                  },
+                  "pack12": {
+                    "field": "pack12_duration",
+                    "editable": true,
+                    "format": "integer"
+                  }
+                }
+              },
+              {
+                "id": "pkg_fee",
+                "label": "Mức phí theo Gói phí (USD)",
+                "cells": {
+                  "pack6": {
+                    "field": "pack6_fee",
+                    "editable": true,
+                    "format": "money"
+                  },
+                  "pack12": {
+                    "field": "pack12_fee",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_total_pkg",
+            "type": "label",
+            "label": "TỔNG PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "grand_total_pkg",
+                "type": "total",
+                "label": "Mức phí theo Gói phí (USD)**",
+                "cells": {
+                  "pack6": {
+                    "field": "pack6_fee",
+                    "editable": false,
+                    "format": "money"
+                  },
+                  "pack12": {
+                    "field": "pack12_fee",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "note": "(**) Không giới hạn 'Số lượng giao dịch' và không phát sinh phí khác."
+      }
+    ]
+  },
+  "notes": [
+    "KH có doanh số chuyển tiền là 1 triệu USD, so sánh mức phí theo gói phí và biểu phí.",
+    "Phương án 2 tối ưu hơn phương án 1.",
+    "Sử dụng Gói phí 6 tháng: tối ưu hơn 1,060 USD.",
+    "Sử dụng Gói phí 12 tháng: tối ưu hơn 860 USD."
+  ]
+}

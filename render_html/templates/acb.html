@@ -1,0 +1,21 @@
+<section class="panel">
+  <h2>{{ choice.title }}</h2>
+
+  <h3>A. Chi phí vay tại ACB</h3>
+  <ul>
+    <li>Số tiền vay: <b>{{ loan_amount | money }}</b></li>
+    <li>Thời gian vay: <b>{{ loan_term_years | number }} năm</b></li>
+    <li>Gốc/kỳ: <b>{{ acb_monthly_principal | money }}</b></li>
+    <li>Lãi/kỳ: <b>{{ acb_monthly_interest | money }}</b> ({{ acb_rate_pct }}%)</li>
+    <li>Tổng lãi năm 1: <b>{{ acb_interest_year | money }}</b></li>
+    <li>Tổng lãi đến đáo hạn: <b>{{ acb_interest_to_maturity | money }}</b></li>
+  </ul>
+
+  <h3>B. Chi phí phạt trả nợ trước hạn</h3>
+  <ul>
+    <li>Phí phạt: <b>{{ acb_penalty_fee | money }}</b> ({{ penalty_pct }}%)</li>
+  </ul>
+
+  <p><b>Tổng chi phí năm 1:</b> {{ acb_total_cost_year1 | money }}</p>
+  <p><b>Tổng chi phí đến đáo hạn:</b> {{ acb_total_cost_to_maturity | money }}</p>
+</section>

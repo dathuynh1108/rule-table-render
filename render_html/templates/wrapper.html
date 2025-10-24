@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 24px;
+        background: #f6f7fb;
+        color: #1f1f1f;
+      }
+      h1 {
+        margin-bottom: 16px;
+      }
+      .panels {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+      .panel {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{{ title }}</h1>
+      <p>Mã kịch bản: <b>{{ scenario_id }}</b></p>
+    </header>
+
+    <section class="panels">
+      {% for block in rendered_choices %}
+        {{ block | safe }}
+      {% endfor %}
+    </section>
+  </body>
+</html>

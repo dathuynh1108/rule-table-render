@@ -1,0 +1,427 @@
+{
+  "title": "DEMO KỊCH BẢN 5 - SO SÁNH COMBO “UPAS LC VND + FORWARD” & “VAY VND + SPOT”",
+  "currency": "VND",
+  "fields": [
+    {
+      "id": "trade_value_usd",
+      "type": "number",
+      "source": "user",
+      "default": 1000000
+    },
+    {
+      "id": "scenario1_trade_date",
+      "type": "text",
+      "source": "user",
+      "default": "Thứ 2, 18/08/2025"
+    },
+    {
+      "id": "scenario1_spot_rate",
+      "type": "number",
+      "source": "user",
+      "default": 25924
+    },
+    {
+      "id": "scenario1_plan1_interest_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 6.5
+    },
+    {
+      "id": "scenario1_plan1_interest_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 424727452
+    },
+    {
+      "id": "scenario1_plan2_interest_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 4.5
+    },
+    {
+      "id": "scenario1_plan2_interest_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 294042082
+    },
+    {
+      "id": "scenario1_plan2_upas_fee_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 91479759
+    },
+    {
+      "id": "scenario1_plan1_total_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 424727452
+    },
+    {
+      "id": "scenario1_plan2_total_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 385521841
+    },
+    {
+      "id": "scenario2_trade_date",
+      "type": "text",
+      "source": "user",
+      "default": "Thứ 2, 18/08/2025"
+    },
+    {
+      "id": "scenario2_spot_rate",
+      "type": "number",
+      "source": "user",
+      "default": 25924
+    },
+    {
+      "id": "scenario2_plan1_interest_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 7.0
+    },
+    {
+      "id": "scenario2_plan1_interest_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 914797590
+    },
+    {
+      "id": "scenario2_plan2_interest_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 4.3
+    },
+    {
+      "id": "scenario2_plan2_interest_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 561947090
+    },
+    {
+      "id": "scenario2_plan2_upas_fee_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 222165129
+    },
+    {
+      "id": "scenario2_plan1_total_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 914797590
+    },
+    {
+      "id": "scenario2_plan2_total_vnd",
+      "type": "number",
+      "source": "user",
+      "default": 784112219
+    }
+  ],
+  "inputs": [
+    {
+      "key": "trade_value_usd",
+      "label": "Giá trị giao dịch (USD)",
+      "field": "trade_value_usd",
+      "format": "money"
+    },
+    {
+      "key": "scenario1_spot_rate",
+      "label": "Tỷ giá USD/VND (Kịch bản 1)",
+      "field": "scenario1_spot_rate",
+      "format": "money"
+    },
+    {
+      "key": "scenario2_spot_rate",
+      "label": "Tỷ giá USD/VND (Kịch bản 2)",
+      "field": "scenario2_spot_rate",
+      "format": "money"
+    }
+  ],
+  "layout": {
+    "tables": [
+      {
+        "id": "scenario1",
+        "title": "KỊCH BẢN 1: 3 THÁNG",
+        "col_defs": [
+          {
+            "key": "plan1",
+            "title": "PHƯƠNG ÁN 1: VAY VND + SPOT"
+          },
+          {
+            "key": "plan2",
+            "title": "PHƯƠNG ÁN 2: UPAS LC VND + VAY + FORWARD"
+          }
+        ],
+        "rows": [
+          {
+            "id": "trade_value",
+            "label": "Giá trị giao dịch (USD) (*)",
+            "cells": {
+              "plan1": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "trade_date",
+            "label": "Ngày giao dịch (*)",
+            "cells": {
+              "plan1": {
+                "field": "scenario1_trade_date",
+                "editable": false
+              },
+              "plan2": {
+                "field": "scenario1_trade_date",
+                "editable": false
+              }
+            }
+          },
+          {
+            "id": "spot_rate",
+            "label": "Tỷ giá giao dịch (USD/VND) (*)",
+            "cells": {
+              "plan1": {
+                "field": "scenario1_spot_rate",
+                "editable": true,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario1_spot_rate",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "section_b",
+            "type": "label",
+            "label": "B. CHI PHÍ LÃI VAY"
+          },
+          {
+            "id": "interest_cost",
+            "label": "Tiền lãi vay (VND)",
+            "extra_label": {
+              "text": ""
+            },
+            "cells": {
+              "plan1": {
+                "field": "scenario1_plan1_interest_vnd",
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario1_plan2_interest_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "interest_rate",
+            "label": "Lãi suất vay VND (%/năm)",
+            "cells": {
+              "plan1": {
+                "field": "scenario1_plan1_interest_rate_pct",
+                "editable": true,
+                "format": "percent_per_year"
+              },
+              "plan2": {
+                "field": "scenario1_plan2_interest_rate_pct",
+                "editable": true,
+                "format": "percent_per_year"
+              }
+            }
+          },
+          {
+            "id": "section_c",
+            "type": "label",
+            "label": "C. PHÍ UPAS LC"
+          },
+          {
+            "id": "upas_fee",
+            "label": "Phí UPAS LC (VND)",
+            "cells": {
+              "plan1": {
+                "value": 0,
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario1_plan2_upas_fee_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "total_cost",
+            "type": "total",
+            "label": "Chi phí phải trả (VND)",
+            "cells": {
+              "plan1": {
+                "field": "scenario1_plan1_total_vnd",
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario1_plan2_total_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "scenario2",
+        "title": "KỊCH BẢN 2: 6 THÁNG",
+        "col_defs": [
+          {
+            "key": "plan1",
+            "title": "PHƯƠNG ÁN 1: VAY VND + SPOT"
+          },
+          {
+            "key": "plan2",
+            "title": "PHƯƠNG ÁN 2: UPAS LC VND + VAY + FORWARD"
+          }
+        ],
+        "rows": [
+          {
+            "id": "trade_value",
+            "label": "Giá trị giao dịch (USD) (*)",
+            "cells": {
+              "plan1": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "trade_date",
+            "label": "Ngày giao dịch (*)",
+            "cells": {
+              "plan1": {
+                "field": "scenario2_trade_date",
+                "editable": false
+              },
+              "plan2": {
+                "field": "scenario2_trade_date",
+                "editable": false
+              }
+            }
+          },
+          {
+            "id": "spot_rate",
+            "label": "Tỷ giá giao dịch (USD/VND) (*)",
+            "cells": {
+              "plan1": {
+                "field": "scenario2_spot_rate",
+                "editable": true,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario2_spot_rate",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "section_b",
+            "type": "label",
+            "label": "B. CHI PHÍ LÃI VAY"
+          },
+          {
+            "id": "interest_cost",
+            "label": "Tiền lãi vay (VND)",
+            "cells": {
+              "plan1": {
+                "field": "scenario2_plan1_interest_vnd",
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario2_plan2_interest_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "interest_rate",
+            "label": "Lãi suất vay VND (%/năm)",
+            "cells": {
+              "plan1": {
+                "field": "scenario2_plan1_interest_rate_pct",
+                "editable": true,
+                "format": "percent_per_year"
+              },
+              "plan2": {
+                "field": "scenario2_plan2_interest_rate_pct",
+                "editable": true,
+                "format": "percent_per_year"
+              }
+            }
+          },
+          {
+            "id": "section_c",
+            "type": "label",
+            "label": "C. PHÍ UPAS LC"
+          },
+          {
+            "id": "upas_fee",
+            "label": "Phí UPAS LC (VND)",
+            "cells": {
+              "plan1": {
+                "value": 0,
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario2_plan2_upas_fee_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "total_cost",
+            "type": "total",
+            "label": "Chi phí phải trả (VND)",
+            "cells": {
+              "plan1": {
+                "field": "scenario2_plan1_total_vnd",
+                "editable": false,
+                "format": "money"
+              },
+              "plan2": {
+                "field": "scenario2_plan2_total_vnd",
+                "editable": false,
+                "format": "money"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Với lô hàng nhập khẩu trị giá 1 triệu USD, bảng so sánh phương án “Vay VND + Spot” và “UPAS LC VND + Vay + Forward”.",
+    "Kịch bản 1 (3 tháng): Phương án 2 tối ưu hơn Phương án 1 là 39,205,611 VND.",
+    "Kịch bản 2 (6 tháng): Phương án 2 tối ưu hơn Phương án 1 là 130,685,370 VND.",
+    "Các thông tin trên chỉ mang tính chất tham khảo. Cần đối chiếu với dữ liệu Core Banking: tỷ giá, lãi suất vay VND, phí UPAS LC."
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "title": "DEMO KỊCH BẢN 4 - TƯ VẤN PHÒNG VỆ BIẾN ĐỘNG TỶ GIÁ BẰNG FORWARD",
+  "currency": "VND",
+  "inputs": {
+    "import_trade_value_aud": 1000000,
+    "import_forward_rate": 16900,
+    "export_trade_value_eur": 1000000,
+    "export_forward_rate": 29870
+  },
+  "tables": [
+    {
+      "id": "import_table",
+      "title": "I. KHÁCH HÀNG NHẬP KHẨU: MUA AUD TẠI ACB",
+      "rows": [
+        {
+          "id": "import_trade_value",
+          "label": "Giá trị giao dịch (AUD) (*)",
+          "cells": {
+            "spot": {
+              "value": 1000000,
+              "editable": true
+            },
+            "forward": {
+              "value": 1000000,
+              "editable": true
+            }
+          }
+        },
+        {
+          "id": "import_today",
+          "label": "Ngày hiện tại (*)",
+          "cells": {
+            "spot": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_spot_trade",
+          "label": "Ngày giao dịch Spot (*)",
+          "cells": {
+            "spot": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_forward_trade",
+          "label": "Ngày giao dịch Forward (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_spot_rate_today_row",
+          "label": "Tỷ giá Spot hiện tại (AUD/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": 16850,
+              "editable": true
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_spot_rate_trade_row",
+          "label": "Tỷ giá Spot theo ngày giao dịch (AUD/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": 17500,
+              "editable": true
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_forward_rate_row",
+          "label": "Tỷ giá Forward (AUD/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": 16900,
+              "editable": true
+            }
+          }
+        },
+        {
+          "id": "import_forward_value_date_row",
+          "label": "Ngày hiệu lực Forward (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 25/07/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_margin_pct_row",
+          "label": "Số tiền ký quỹ (VND)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": 338000000,
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "import_value_vnd_row",
+          "label": "Giá trị giao dịch (VND)",
+          "type": "total",
+          "cells": {
+            "spot": {
+              "value": 17500000000,
+              "editable": false
+            },
+            "forward": {
+              "value": 16900000000,
+              "editable": false
+            }
+          }
+        }
+      ],
+      "col_defs": [
+        {
+          "key": "spot",
+          "title": "PHƯƠNG ÁN 1: SPOT"
+        },
+        {
+          "key": "forward",
+          "title": "PHƯƠNG ÁN 2: FORWARD"
+        }
+      ]
+    },
+    {
+      "id": "export_table",
+      "title": "II. KHÁCH HÀNG XUẤT KHẨU: BÁN EUR CHO ACB",
+      "rows": [
+        {
+          "id": "export_trade_value",
+          "label": "Giá trị giao dịch (EUR) (*)",
+          "cells": {
+            "spot": {
+              "value": 1000000,
+              "editable": true
+            },
+            "forward": {
+              "value": 1000000,
+              "editable": true
+            }
+          }
+        },
+        {
+          "id": "export_today",
+          "label": "Ngày hiện tại (*)",
+          "cells": {
+            "spot": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_spot_trade",
+          "label": "Ngày giao dịch Spot (*)",
+          "cells": {
+            "spot": {
+              "value": "Thứ 6, 25/04/2025",
+              "editable": false
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_forward_trade",
+          "label": "Ngày giao dịch Forward (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 23/05/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_spot_rate_today_row",
+          "label": "Tỷ giá Spot hiện tại (EUR/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": 29550,
+              "editable": true
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_spot_rate_trade_row",
+          "label": "Tỷ giá Spot theo ngày giao dịch (EUR/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": 29200,
+              "editable": true
+            },
+            "forward": {
+              "value": "",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_forward_rate_row",
+          "label": "Tỷ giá Forward (EUR/VND) (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": 29870,
+              "editable": true
+            }
+          }
+        },
+        {
+          "id": "export_forward_value_date_row",
+          "label": "Ngày hiệu lực Forward (*)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": "Thứ 6, 25/07/2025",
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_margin_pct_row",
+          "label": "Số tiền ký quỹ (VND)",
+          "cells": {
+            "spot": {
+              "value": "",
+              "editable": false
+            },
+            "forward": {
+              "value": 597400000,
+              "editable": false
+            }
+          }
+        },
+        {
+          "id": "export_value_vnd_row",
+          "label": "Giá trị giao dịch (VND)",
+          "type": "total",
+          "cells": {
+            "spot": {
+              "value": 29200000000,
+              "editable": false
+            },
+            "forward": {
+              "value": 29870000000,
+              "editable": false
+            }
+          }
+        }
+      ],
+      "col_defs": [
+        {
+          "key": "spot",
+          "title": "PHƯƠNG ÁN 1: SPOT"
+        },
+        {
+          "key": "forward",
+          "title": "PHƯƠNG ÁN 2: FORWARD"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Cho tôi giải pháp giúp KH cố định tỷ giá cho các lô hàng nhập khẩu và xuất khẩu.",
+    "Phương án 2 tối ưu hơn phương án 1 khi tỷ giá tăng/giảm bất lợi cho khách hàng.",
+    "Nếu tỷ giá AUD/VND tăng 3 tháng tới, khách hàng có thể lỗ 600,000,000 VND nếu không mua Forward.",
+    "Nếu tỷ giá EUR/VND giảm 3 tháng tới, khách hàng có thể lỗ 670,000,000 VND nếu không mua sản phẩm Forward."
+  ]
+}

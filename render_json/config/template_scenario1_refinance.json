@@ -1,0 +1,421 @@
+{
+  "title": "DEMO KỊCH BẢN 1 - TƯ VẤN PHƯƠNG ÁN TÁI TÀI TRỢ",
+  "currency": "VND",
+  "fields": [
+    {
+      "id": "loan_amount",
+      "type": "number",
+      "source": "user",
+      "default": 2000000000
+    },
+    {
+      "id": "loan_term_years",
+      "type": "number",
+      "source": "user",
+      "default": 3
+    },
+    {
+      "id": "acb_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 7
+    },
+    {
+      "id": "existing_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 10
+    },
+    {
+      "id": "penalty_pct",
+      "type": "number",
+      "source": "user",
+      "default": 2
+    },
+    {
+      "id": "loan_term_months",
+      "type": "number",
+      "source": "calc",
+      "formula": "loan_term_years * 12"
+    },
+    {
+      "id": "acb_principal_monthly",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount / loan_term_months)"
+    },
+    {
+      "id": "acb_interest_monthly",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount * acb_rate_pct / 100 / 12)"
+    },
+    {
+      "id": "acb_interest_year",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount * acb_rate_pct / 100)"
+    },
+    {
+      "id": "acb_interest_total",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(acb_interest_year * loan_term_years)"
+    },
+    {
+      "id": "acb_penalty_fee",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount * penalty_pct / 100)"
+    },
+    {
+      "id": "acb_total_year1",
+      "type": "number",
+      "source": "calc",
+      "formula": "acb_interest_year + acb_penalty_fee"
+    },
+    {
+      "id": "acb_total_total",
+      "type": "number",
+      "source": "calc",
+      "formula": "acb_interest_total + acb_penalty_fee"
+    },
+    {
+      "id": "existing_principal_monthly",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount / loan_term_months)"
+    },
+    {
+      "id": "existing_interest_monthly",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount * existing_rate_pct / 100 / 12)"
+    },
+    {
+      "id": "existing_interest_year",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(loan_amount * existing_rate_pct / 100)"
+    },
+    {
+      "id": "existing_interest_total",
+      "type": "number",
+      "source": "calc",
+      "formula": "round(existing_interest_year * loan_term_years)"
+    }
+  ],
+  "inputs": [
+    {
+      "key": "loan_amount_vnd",
+      "label": "Số tiền vay",
+      "field": "loan_amount",
+      "format": "money"
+    },
+    {
+      "key": "loan_term_years",
+      "label": "Thời gian vay (năm)",
+      "field": "loan_term_years",
+      "format": "integer"
+    },
+    {
+      "key": "acb_rate_pct",
+      "label": "Lãi suất ACB",
+      "field": "acb_rate_pct",
+      "format": "percent_per_year"
+    },
+    {
+      "key": "existing_rate_pct",
+      "label": "Lãi suất hiện hữu",
+      "field": "existing_rate_pct",
+      "format": "percent_per_year"
+    },
+    {
+      "key": "penalty_pct",
+      "label": "Phí phạt trả nợ trước hạn",
+      "field": "penalty_pct",
+      "format": "percent"
+    }
+  ],
+  "layout": {
+    "tables": [
+      {
+        "id": "refinance_plan_acb",
+        "title": "PHƯƠNG ÁN 1: ACB TÁI TÀI TRỢ",
+        "rows": [
+          {
+            "id": "hdr_a",
+            "type": "label",
+            "label": "A. CHI PHÍ VAY TẠI ACB",
+            "cells": {},
+            "children": [
+              {
+                "id": "loan_amount",
+                "label": "Số tiền vay (VND) (*)",
+                "extra_label": {
+                  "text": "VND:"
+                },
+                "cells": {
+                  "main": {
+                    "field": "loan_amount",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "loan_term_years_row",
+                "label": "Thời gian vay (năm) (*)",
+                "cells": {
+                  "main": {
+                    "field": "loan_term_years",
+                    "editable": true,
+                    "format": "integer"
+                  }
+                }
+              },
+              {
+                "id": "principal_monthly",
+                "label": "Gốc phải trả mỗi kỳ (VND)",
+                "cells": {
+                  "main": {
+                    "field": "acb_principal_monthly",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_monthly",
+                "label": "Lãi phải trả mỗi kỳ (VND)",
+                "cells": {
+                  "main": {
+                    "field": "acb_interest_monthly",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_rate",
+                "label": "Lãi suất (%/năm)",
+                "cells": {
+                  "main": {
+                    "field": "acb_rate_pct",
+                    "editable": true,
+                    "format": "percent_per_year"
+                  }
+                }
+              },
+              {
+                "id": "interest_year",
+                "label": "Tổng lãi phải trả năm 1 (VND) (1)",
+                "cells": {
+                  "main": {
+                    "field": "acb_interest_year",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_total",
+                "label": "Tổng lãi phải trả đến khi đáo hạn (VND) (2)",
+                "cells": {
+                  "main": {
+                    "field": "acb_interest_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_b",
+            "type": "label",
+            "label": "B. CHI PHÍ PHẠT TRẢ NỢ TRƯỚC HẠN",
+            "cells": {},
+            "children": [
+              {
+                "id": "penalty_fee",
+                "label": "Phí phạt trả nợ trước hạn (VND) (3)",
+                "cells": {
+                  "main": {
+                    "field": "acb_penalty_fee",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_total",
+            "type": "label",
+            "label": "C. TỔNG CHI PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "total_year1",
+                "type": "total",
+                "label": "Tổng chi phí năm 1 (VND) = (1) + (3)",
+                "cells": {
+                  "main": {
+                    "field": "acb_total_year1",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "total_to_maturity",
+                "type": "total",
+                "label": "Tổng chi phí đến khi đáo hạn (VND) = (2) + (3)",
+                "cells": {
+                  "main": {
+                    "field": "acb_total_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "refinance_plan_existing",
+        "title": "PHƯƠNG ÁN 2: DUY TRÌ KHOẢN VAY HIỆN HỮU",
+        "rows": [
+          {
+            "id": "hdr_a_existing",
+            "type": "label",
+            "label": "A. CHI PHÍ VAY TẠI NGÂN HÀNG HIỆN HỮU",
+            "cells": {},
+            "children": [
+              {
+                "id": "loan_amount_existing",
+                "label": "Số tiền vay (VND) (*)",
+                "extra_label": {
+                  "text": "VND:"
+                },
+                "cells": {
+                  "main": {
+                    "field": "loan_amount",
+                    "editable": true,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "loan_term_years_existing",
+                "label": "Thời gian vay (năm) (*)",
+                "cells": {
+                  "main": {
+                    "field": "loan_term_years",
+                    "editable": true,
+                    "format": "integer"
+                  }
+                }
+              },
+              {
+                "id": "principal_monthly_existing",
+                "label": "Gốc phải trả mỗi kỳ (VND)",
+                "cells": {
+                  "main": {
+                    "field": "existing_principal_monthly",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_monthly_existing",
+                "label": "Lãi phải trả mỗi kỳ (VND)",
+                "cells": {
+                  "main": {
+                    "field": "existing_interest_monthly",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_rate_existing",
+                "label": "Lãi suất (%/năm)",
+                "cells": {
+                  "main": {
+                    "field": "existing_rate_pct",
+                    "editable": true,
+                    "format": "percent_per_year"
+                  }
+                }
+              },
+              {
+                "id": "interest_year_existing",
+                "label": "Tổng lãi phải trả năm 1 (VND) (1)",
+                "cells": {
+                  "main": {
+                    "field": "existing_interest_year",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "interest_total_existing",
+                "label": "Tổng lãi phải trả đến khi đáo hạn (VND) (2)",
+                "cells": {
+                  "main": {
+                    "field": "existing_interest_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "hdr_total_existing",
+            "type": "label",
+            "label": "B. TỔNG CHI PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "total_year1_existing",
+                "type": "total",
+                "label": "Tổng chi phí năm 1 (VND) = (1)",
+                "cells": {
+                  "main": {
+                    "field": "existing_interest_year",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "total_to_maturity_existing",
+                "type": "total",
+                "label": "Tổng chi phí đến khi đáo hạn (VND) = (2)",
+                "cells": {
+                  "main": {
+                    "field": "existing_interest_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Khách hàng đang vay 500 triệu đồng ở ngân hàng khác, thời gian vay 3 năm, so sánh phương án vay tái tài trợ của ACB và ngân hàng khác.",
+    "Phương án 1 tối ưu hơn phương án 2.",
+    "Khách hàng tiết kiệm được 20,000,000 VND ngay từ năm 1.",
+    "Khách hàng tiết kiệm được 140,000,000 VND trong suốt thời gian vay."
+  ]
+}

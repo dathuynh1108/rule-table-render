@@ -1,0 +1,124 @@
+{
+    "scenario_id": "refinance_s1",
+    "use_fields": [
+        "loan_amount",
+        "loan_term_months"
+    ],
+    "overrides": {
+        "loan_amount": {
+            "default": 2000000000
+        },
+        "loan_term_months": {
+            "default": 36
+        }
+    },
+    "choices": [
+        {
+            "key": "ACB",
+            "title": "Phương án 1: ACB tái tài trợ",
+            "template": "acb.html"
+        },
+        {
+            "key": "EXISTING",
+            "title": "Phương án 2: Duy trì khoản vay hiện hữu",
+            "template": "existing.html"
+        }
+    ],
+    "field_labels": {
+        "loan_amount": "Số tiền vay (VND)",
+        "loan_term_months": "Thời gian vay (tháng)",
+        "acb_rate_pct": "Lãi suất ACB (%)",
+        "penalty_pct": "Phí phạt (%)",
+        "existing_rate_pct": "Lãi suất hiện hữu (%)",
+        "loan_term_years": "Thời gian vay (năm)",
+        "acb_monthly_principal": "Gốc/kỳ",
+        "acb_monthly_interest": "Lãi/kỳ (VND)",
+        "acb_interest_year": "Tổng lãi năm 1",
+        "acb_interest_to_maturity": "Tổng lãi đến đáo hạn",
+        "acb_penalty_fee": "Phí phạt trả nợ trước hạn",
+        "acb_total_cost_year1": "Tổng chi phí năm 1",
+        "acb_total_cost_to_maturity": "Tổng chi phí đến đáo hạn",
+        "existing_interest_year": "Tổng lãi năm 1 (hiện hữu)",
+        "existing_interest_to_maturity": "Tổng lãi đến đáo hạn (hiện hữu)"
+    },
+    "fields": [
+        {
+            "id": "acb_rate_pct",
+            "type": "percent",
+            "source": "user",
+            "default": 7
+        },
+        {
+            "id": "penalty_pct",
+            "type": "percent",
+            "source": "user",
+            "default": 2
+        },
+        {
+            "id": "existing_rate_pct",
+            "type": "percent",
+            "source": "user",
+            "default": 10
+        },
+        {
+            "id": "loan_term_years",
+            "type": "number",
+            "source": "calc",
+            "formula": "loan_term_months / 12"
+        },
+        {
+            "id": "acb_monthly_principal",
+            "source": "calc",
+            "type": "number",
+            "formula": "loan_amount / loan_term_months"
+        },
+        {
+            "id": "acb_monthly_interest",
+            "source": "calc",
+            "type": "number",
+            "formula": "loan_amount * (acb_rate_pct/100) / 12"
+        },
+        {
+            "id": "acb_interest_year",
+            "source": "calc",
+            "type": "number",
+            "formula": "loan_amount * (acb_rate_pct/100)"
+        },
+        {
+            "id": "acb_interest_to_maturity",
+            "source": "calc",
+            "type": "number",
+            "formula": "acb_interest_year * loan_term_years"
+        },
+        {
+            "id": "acb_penalty_fee",
+            "source": "calc",
+            "type": "number",
+            "formula": "loan_amount * (penalty_pct/100)"
+        },
+        {
+            "id": "acb_total_cost_year1",
+            "source": "calc",
+            "type": "number",
+            "formula": "acb_interest_year + acb_penalty_fee"
+        },
+        {
+            "id": "acb_total_cost_to_maturity",
+            "source": "calc",
+            "type": "number",
+            "formula": "acb_interest_to_maturity + acb_penalty_fee"
+        },
+        {
+            "id": "existing_interest_year",
+            "source": "calc",
+            "type": "number",
+            "formula": "loan_amount * (existing_rate_pct/100)"
+        },
+        {
+            "id": "existing_interest_to_maturity",
+            "source": "calc",
+            "type": "number",
+            "formula": "existing_interest_year * loan_term_years"
+        }
+    ]
+}

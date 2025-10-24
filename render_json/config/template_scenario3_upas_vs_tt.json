@@ -1,0 +1,573 @@
+{
+  "title": "DEMO KỊCH BẢN 3 - SO SÁNH PHƯƠNG ÁN UPAS LC / OPLC SO VỚI VAY ĐỂ TRẢ TIỀN NGAY",
+  "currency": "USD",
+  "fields": [
+    {
+      "id": "trade_value_usd",
+      "type": "number",
+      "source": "user",
+      "default": 1000000
+    },
+    {
+      "id": "plan1_tenor_days",
+      "type": "number",
+      "source": "user",
+      "default": 90
+    },
+    {
+      "id": "plan1_rate_pct",
+      "type": "number",
+      "source": "user",
+      "default": 8
+    },
+    {
+      "id": "plan1_interest_usd",
+      "type": "number",
+      "source": "user",
+      "default": 39452
+    },
+    {
+      "id": "plan1_transfer_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 2200
+    },
+    {
+      "id": "plan1_swift_tx",
+      "type": "number",
+      "source": "user",
+      "default": 3
+    },
+    {
+      "id": "plan1_swift_fee_unit",
+      "type": "number",
+      "source": "user",
+      "default": 8
+    },
+    {
+      "id": "plan1_swift_fee_total",
+      "type": "number",
+      "source": "user",
+      "default": 24
+    },
+    {
+      "id": "plan1_total_cost",
+      "type": "number",
+      "source": "user",
+      "default": 39760
+    },
+    {
+      "id": "plan2_tenor_days",
+      "type": "number",
+      "source": "user",
+      "default": 90
+    },
+    {
+      "id": "plan2_margin_pct",
+      "type": "number",
+      "source": "user",
+      "default": 5
+    },
+    {
+      "id": "plan2_interest_usd",
+      "type": "number",
+      "source": "user",
+      "default": 26625
+    },
+    {
+      "id": "plan2_transfer_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 2200
+    },
+    {
+      "id": "plan2_swift_fee_total",
+      "type": "number",
+      "source": "user",
+      "default": 24
+    },
+    {
+      "id": "plan2_issuance_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 6115
+    },
+    {
+      "id": "plan2_total_cost",
+      "type": "number",
+      "source": "user",
+      "default": 34964
+    },
+    {
+      "id": "plan3_tenor_days",
+      "type": "number",
+      "source": "user",
+      "default": 90
+    },
+    {
+      "id": "plan3_margin_pct",
+      "type": "number",
+      "source": "user",
+      "default": 7
+    },
+    {
+      "id": "plan3_interest_usd",
+      "type": "number",
+      "source": "user",
+      "default": 30000
+    },
+    {
+      "id": "plan3_transfer_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 2200
+    },
+    {
+      "id": "plan3_swift_fee_total",
+      "type": "number",
+      "source": "user",
+      "default": 24
+    },
+    {
+      "id": "plan3_margin_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 4476
+    },
+    {
+      "id": "plan3_insurance_fee_usd",
+      "type": "number",
+      "source": "user",
+      "default": 3846
+    },
+    {
+      "id": "plan3_total_cost",
+      "type": "number",
+      "source": "user",
+      "default": 43058
+    }
+  ],
+  "inputs": [
+    {
+      "key": "trade_value_usd",
+      "label": "Trị giá lô chứng từ (USD)",
+      "field": "trade_value_usd",
+      "format": "money"
+    },
+    {
+      "key": "tenor_days",
+      "label": "Thời hạn thanh toán (ngày)",
+      "field": "plan1_tenor_days",
+      "format": "integer"
+    },
+    {
+      "key": "plan1_rate_pct",
+      "label": "Lãi suất vay hiện hữu",
+      "field": "plan1_rate_pct",
+      "format": "percent_per_year"
+    },
+    {
+      "key": "plan2_margin_pct",
+      "label": "Margin UPAS LC",
+      "field": "plan2_margin_pct",
+      "format": "percent"
+    },
+    {
+      "key": "plan3_margin_pct",
+      "label": "Margin OPLC",
+      "field": "plan3_margin_pct",
+      "format": "percent"
+    }
+  ],
+  "layout": {
+    "tables": [
+      {
+        "id": "plan1_summary",
+        "title": "PHƯƠNG ÁN 1: TT TRƯỚC 100% + VAY",
+        "rows": [
+          {
+            "id": "plan1_trade_value",
+            "label": "Trị giá lô chứng từ (USD)",
+            "cells": {
+              "main": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "plan1_tenor",
+            "label": "Thời hạn thanh toán (ngày)",
+            "cells": {
+              "main": {
+                "field": "plan1_tenor_days",
+                "editable": true,
+                "format": "integer"
+              }
+            }
+          },
+          {
+            "id": "plan1_rate",
+            "label": "Lãi suất vay (%/năm)",
+            "cells": {
+              "main": {
+                "field": "plan1_rate_pct",
+                "editable": true,
+                "format": "percent_per_year"
+              }
+            }
+          },
+          {
+            "id": "plan1_section",
+            "type": "label",
+            "label": "A. CHI PHÍ LÃI VAY",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan1_interest_cost",
+                "label": "Số tiền lãi vay (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan1_interest_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan1_payments",
+            "type": "label",
+            "label": "B. CHI PHÍ THANH TOÁN",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan1_transfer_fee",
+                "label": "Phí chuyển tiền (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan1_transfer_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "plan1_swift_fee",
+                "label": "Điện phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan1_swift_fee_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan1_total_section",
+            "type": "label",
+            "label": "C. TỔNG CHI PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan1_total_cost",
+                "type": "total",
+                "label": "Tổng chi phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan1_total_cost",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "plan2_summary",
+        "title": "PHƯƠNG ÁN 2: UPAS LC",
+        "rows": [
+          {
+            "id": "plan2_trade_value",
+            "label": "Trị giá lô chứng từ (USD)",
+            "cells": {
+              "main": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "plan2_tenor",
+            "label": "Thời hạn trả chậm UPAS LC (ngày)",
+            "cells": {
+              "main": {
+                "field": "plan2_tenor_days",
+                "editable": true,
+                "format": "integer"
+              }
+            }
+          },
+          {
+            "id": "plan2_margin",
+            "label": "Margin UPAS LC (%)",
+            "cells": {
+              "main": {
+                "field": "plan2_margin_pct",
+                "editable": true,
+                "format": "percent"
+              }
+            }
+          },
+          {
+            "id": "plan2_financing",
+            "type": "label",
+            "label": "A. CHI PHÍ TÀI TRỢ",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan2_interest_cost",
+                "label": "Số tiền lãi cấp tín dụng UPAS LC (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan2_interest_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan2_settlement",
+            "type": "label",
+            "label": "B. CHI PHÍ THANH TOÁN BCT",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan2_transfer_fee",
+                "label": "Phí chuyển tiền (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan2_transfer_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "plan2_swift_fee",
+                "label": "Điện phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan2_swift_fee_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan2_issuance",
+            "type": "label",
+            "label": "C. PHÍ PHÁT HÀNH LC",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan2_issuance_fee",
+                "label": "Phí phát hành/ xử lý LC (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan2_issuance_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan2_total_section",
+            "type": "label",
+            "label": "D. TỔNG CHI PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan2_total_cost",
+                "type": "total",
+                "label": "Tổng chi phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan2_total_cost",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "plan3_summary",
+        "title": "PHƯƠNG ÁN 3: OPLC",
+        "rows": [
+          {
+            "id": "plan3_trade_value",
+            "label": "Trị giá lô chứng từ (USD)",
+            "cells": {
+              "main": {
+                "field": "trade_value_usd",
+                "editable": true,
+                "format": "money"
+              }
+            }
+          },
+          {
+            "id": "plan3_tenor",
+            "label": "Thời hạn trả chậm OPLC (ngày)",
+            "cells": {
+              "main": {
+                "field": "plan3_tenor_days",
+                "editable": true,
+                "format": "integer"
+              }
+            }
+          },
+          {
+            "id": "plan3_margin",
+            "label": "Margin OPLC (%)",
+            "cells": {
+              "main": {
+                "field": "plan3_margin_pct",
+                "editable": true,
+                "format": "percent"
+              }
+            }
+          },
+          {
+            "id": "plan3_issuance_section",
+            "type": "label",
+            "label": "A. CHI PHÍ PHÁT HÀNH LC",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan3_margin_fee",
+                "label": "Phí margin/ cam kết (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_margin_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan3_financing_section",
+            "type": "label",
+            "label": "B. CHI PHÍ TÀI TRỢ",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan3_interest_cost",
+                "label": "Số tiền lãi OPLC (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_interest_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan3_settlement_section",
+            "type": "label",
+            "label": "C. CHI PHÍ THANH TOÁN BCT",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan3_transfer_fee",
+                "label": "Phí chuyển tiền (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_transfer_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              },
+              {
+                "id": "plan3_swift_fee",
+                "label": "Điện phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_swift_fee_total",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan3_other_section",
+            "type": "label",
+            "label": "D. CHI PHÍ KHÁC",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan3_insurance_fee",
+                "label": "Chi phí bảo hiểm tỷ giá (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_insurance_fee_usd",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "plan3_total_section",
+            "type": "label",
+            "label": "E. TỔNG CHI PHÍ",
+            "cells": {},
+            "children": [
+              {
+                "id": "plan3_total_cost",
+                "type": "total",
+                "label": "Tổng chi phí (USD)",
+                "cells": {
+                  "main": {
+                    "field": "plan3_total_cost",
+                    "editable": false,
+                    "format": "money"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế.",
+    "Phương án 2 tối ưu hơn phương án 1, đặc biệt với khách hàng không thuộc đối tượng vay ngoại tệ.",
+    "Phương án 3 tối ưu hơn phương án 1 cho khách hàng muốn giảm bớt số dư ngoại bảng và không phát sinh nợ.",
+    "Tùy tình huống thực tế, cần tham khảo thêm thông tin về tỷ giá, lãi suất và phí bảo hiểm."
+  ]
+}

@@ -1,0 +1,12 @@
+<section class="panel">
+  <h2>{{ choice.title }}</h2>
+
+  <h3>A. Chi phí vay tại ngân hàng hiện hữu</h3>
+  <ul>
+    <li>Số tiền vay: <b>{{ loan_amount | money }}</b></li>
+    <li>Thời gian vay: <b>{{ loan_term_years | number }} năm</b></li>
+    <li>Lãi suất: {{ existing_rate_pct }}%</li>
+    <li>Tổng lãi năm 1: <b>{{ existing_interest_year | money }}</b></li>
+    <li>Tổng lãi đến đáo hạn: <b>{{ existing_interest_to_maturity | money }}</b></li>
+</ul>
+</section>

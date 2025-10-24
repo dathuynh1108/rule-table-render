@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "id": "loan_amount",
+      "type": "money",
+      "default": 0,
+      "label": "Số tiền"
+    },
+    {
+      "id": "loan_term_months",
+      "type": "int",
+      "default": 12,
+      "label": "Thời hạn (tháng)"
+    }
+  ]
+}

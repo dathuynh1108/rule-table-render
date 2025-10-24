@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bảng so sánh phương án tái tài trợ</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 24px;
+        background: #f6f7fb;
+        color: #1f1f1f;
+      }
+      h1 {
+        margin-bottom: 16px;
+      }
+      .panels {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+      .panel {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Bảng so sánh phương án tái tài trợ</h1>
+      <p>Mã kịch bản: <b>refinance_s1</b></p>
+    </header>
+
+    <section class="panels">
+      
+        <section class="panel">
+  <h2>Phương án 1: ACB tái tài trợ</h2>
+
+  <h3>A. Chi phí vay tại ACB</h3>
+  <ul>
+    <li>Số tiền vay: <b>2.000.000.000</b></li>
+    <li>Thời gian vay: <b>3.00 năm</b></li>
+    <li>Gốc/kỳ: <b>55.555.556</b></li>
+    <li>Lãi/kỳ: <b>11.666.667</b> (7%)</li>
+    <li>Tổng lãi năm 1: <b>140.000.000</b></li>
+    <li>Tổng lãi đến đáo hạn: <b>420.000.000</b></li>
+  </ul>
+
+  <h3>B. Chi phí phạt trả nợ trước hạn</h3>
+  <ul>
+    <li>Phí phạt: <b>40.000.000</b> (2%)</li>
+  </ul>
+
+  <p><b>Tổng chi phí năm 1:</b> 180.000.000</p>
+  <p><b>Tổng chi phí đến đáo hạn:</b> 460.000.000</p>
+</section>
+      
+        <section class="panel">
+  <h2>Phương án 2: Duy trì khoản vay hiện hữu</h2>
+
+  <h3>A. Chi phí vay tại ngân hàng hiện hữu</h3>
+  <ul>
+    <li>Số tiền vay: <b>2.000.000.000</b></li>
+    <li>Thời gian vay: <b>3.00 năm</b></li>
+    <li>Lãi suất: 10%</li>
+    <li>Tổng lãi năm 1: <b>200.000.000</b></li>
+    <li>Tổng lãi đến đáo hạn: <b>600.000.000</b></li>
+  </ul>
+</section>
+      
+    </section>
+  </body>
+</html>
