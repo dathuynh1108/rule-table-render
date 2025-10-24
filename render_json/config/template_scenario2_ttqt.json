@@ -6,79 +6,92 @@
       "id": "amount",
       "type": "number",
       "source": "user",
-      "default": 1000000
+      "default": 1000000,
+      "editable": true
     },
     {
       "id": "fee_rate_pct",
       "type": "number",
       "source": "user",
-      "default": 0.22
+      "default": 0.22,
+      "editable": true
     },
     {
       "id": "fee_amount",
       "type": "number",
       "source": "calc",
-      "formula": "amount * fee_rate_pct / 100"
+      "formula": "amount * fee_rate_pct / 100",
+      "editable": false
     },
     {
       "id": "tx_count",
       "type": "number",
       "source": "user",
-      "default": 20
+      "default": 20,
+      "editable": true
     },
     {
       "id": "swift_unit",
       "type": "number",
       "source": "user",
-      "default": 8
+      "default": 8,
+      "editable": true
     },
     {
       "id": "swift_total",
       "type": "number",
       "source": "calc",
-      "formula": "tx_count * swift_unit"
+      "formula": "tx_count * swift_unit",
+      "editable": false
     },
     {
       "id": "grand_total_opt1",
       "type": "number",
       "source": "calc",
-      "formula": "fee_amount + swift_total"
+      "formula": "fee_amount + swift_total",
+      "editable": false
     },
     {
       "id": "pack6_amount",
       "type": "number",
       "source": "user",
-      "default": 1000000
+      "default": 1000000,
+      "editable": true
     },
     {
       "id": "pack12_amount",
       "type": "number",
       "source": "user",
-      "default": 1000000
+      "default": 1000000,
+      "editable": true
     },
     {
       "id": "pack6_duration",
       "type": "number",
       "source": "user",
-      "default": 6
+      "default": 6,
+      "editable": true
     },
     {
       "id": "pack12_duration",
       "type": "number",
       "source": "user",
-      "default": 12
+      "default": 12,
+      "editable": true
     },
     {
       "id": "pack6_fee",
       "type": "number",
       "source": "user",
-      "default": 1300
+      "default": 1300,
+      "editable": true
     },
     {
       "id": "pack12_fee",
       "type": "number",
       "source": "user",
-      "default": 1500
+      "default": 1500,
+      "editable": true
     }
   ],
   "inputs": [

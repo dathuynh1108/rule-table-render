@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Demo Render JSON</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 2rem;
+      background: #f6f8fa;
+      color: #1f2933;
+    }
+    header {
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #0f4c82;
+    }
+    header .currency {
+      margin-top: 0.25rem;
+      color: #52606d;
+      font-size: 0.95rem;
+    }
+    section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(15, 76, 130, 0.08);
+    }
+    section h2 {
+      margin-top: 0;
+      color: #0f4c82;
+      font-size: 1.25rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid #e4eff8;
+      text-align: left;
+      vertical-align: top;
+    }
+    th.col-label {
+      width: 35%;
+    }
+    .row-label th {
+      background: #f0f6fc;
+      font-weight: 600;
+    }
+    .row-total {
+      font-weight: 700;
+      background: #e1f6ff;
+    }
+    .value-cell.readonly {
+      color: #425466;
+    }
+    .extra-label {
+      display: inline-block;
+      margin-left: 0.35rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      background: #e1f6ff;
+      color: #0f4c82;
+      font-size: 0.8rem;
+    }
+    .subtitle {
+      display: block;
+      font-size: 0.8rem;
+      color: #52606d;
+      margin-top: 0.15rem;
+    }
+    .table-note {
+      margin-top: 0.5rem;
+      font-style: italic;
+      color: #52606d;
+    }
+    .notes ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .notes li {
+      margin-bottom: 0.5rem;
+    }
+    details.data-dump {
+      margin-top: 1rem;
+    }
+    details.data-dump summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .inputs table th {
+      width: 40%;
+      color: #0f4c82;
+    }
+  </style>
+</head>
+<body>
+<header><h1>DEMO KỊCH BẢN 1 - TƯ VẤN PHƯƠNG ÁN TÁI TÀI TRỢ</h1><div class='currency'>Đơn vị: VND</div></header><details class='data-dump'><summary>Dữ liệu thô</summary><table class='data-table'><thead><tr><th>Field</th><th>Value</th><th>Meta</th></tr></thead><tbody><tr><th>loan_amount</th><td>2000000000</td><td>source: user, type: number</td></tr><tr><th>loan_term_years</th><td>3</td><td>source: user, type: number</td></tr><tr><th>acb_rate_pct</th><td>7</td><td>source: user, type: number</td></tr><tr><th>existing_rate_pct</th><td>10</td><td>source: user, type: number</td></tr><tr><th>penalty_pct</th><td>2</td><td>source: user, type: number</td></tr><tr><th>loan_term_months</th><td>36</td><td>source: calc, type: number, formula: loan_term_years * 12</td></tr><tr><th>acb_principal_monthly</th><td>55555556</td><td>source: calc, type: number, formula: round(loan_amount / loan_term_months)</td></tr><tr><th>acb_interest_monthly</th><td>11666667</td><td>source: calc, type: number, formula: round(loan_amount * acb_rate_pct / 100 / 12)</td></tr><tr><th>acb_interest_year</th><td>140000000</td><td>source: calc, type: number, formula: round(loan_amount * acb_rate_pct / 100)</td></tr><tr><th>acb_interest_total</th><td>420000000</td><td>source: calc, type: number, formula: round(acb_interest_year * loan_term_years)</td></tr><tr><th>acb_penalty_fee</th><td>40000000</td><td>source: calc, type: number, formula: round(loan_amount * penalty_pct / 100)</td></tr><tr><th>acb_total_year1</th><td>180000000</td><td>source: calc, type: number, formula: acb_interest_year + acb_penalty_fee</td></tr><tr><th>acb_total_total</th><td>460000000</td><td>source: calc, type: number, formula: acb_interest_total + acb_penalty_fee</td></tr><tr><th>existing_principal_monthly</th><td>55555556</td><td>source: calc, type: number, formula: round(loan_amount / loan_term_months)</td></tr><tr><th>existing_interest_monthly</th><td>16666667</td><td>source: calc, type: number, formula: round(loan_amount * existing_rate_pct / 100 / 12)</td></tr><tr><th>existing_interest_year</th><td>200000000</td><td>source: calc, type: number, formula: round(loan_amount * existing_rate_pct / 100)</td></tr><tr><th>existing_interest_total</th><td>600000000</td><td>source: calc, type: number, formula: round(existing_interest_year * loan_term_years)</td></tr></tbody></table></details><section class='table-block'><h2>PHƯƠNG ÁN 1: ACB TÁI TÀI TRỢ</h2><table class='data-table'><thead><tr><th class='col-label'>Hạng mục</th><th><div></div></th></tr></thead><tbody><tr class="row row-label"><th style='padding-left:0px'>A. CHI PHÍ VAY TẠI ACB</th><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Số tiền vay (VND) (*) <span class='extra-label'>VND:</span></th><td class="value-cell">2.000.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Thời gian vay (năm) (*)</th><td class="value-cell">3</td></tr><tr class="row"><th style='padding-left:18px'>Gốc phải trả mỗi kỳ (VND)</th><td class="value-cell readonly">55.555.556</td></tr><tr class="row"><th style='padding-left:18px'>Lãi phải trả mỗi kỳ (VND)</th><td class="value-cell readonly">11.666.667</td></tr><tr class="row"><th style='padding-left:18px'>Lãi suất (%/năm)</th><td class="value-cell">7.00%/năm</td></tr><tr class="row"><th style='padding-left:18px'>Tổng lãi phải trả năm 1 (VND) (1)</th><td class="value-cell readonly">140.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Tổng lãi phải trả đến khi đáo hạn (VND) (2)</th><td class="value-cell readonly">420.000.000</td></tr><tr class="row row-label"><th style='padding-left:0px'>B. CHI PHÍ PHẠT TRẢ NỢ TRƯỚC HẠN</th><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Phí phạt trả nợ trước hạn (VND) (3)</th><td class="value-cell readonly">40.000.000</td></tr><tr class="row row-label"><th style='padding-left:0px'>C. TỔNG CHI PHÍ</th><td class="value-cell readonly"></td></tr><tr class="row row-total"><th style='padding-left:18px'>Tổng chi phí năm 1 (VND) = (1) + (3)</th><td class="value-cell readonly">180.000.000</td></tr><tr class="row row-total"><th style='padding-left:18px'>Tổng chi phí đến khi đáo hạn (VND) = (2) + (3)</th><td class="value-cell readonly">460.000.000</td></tr></tbody></table></section><section class='table-block'><h2>PHƯƠNG ÁN 2: DUY TRÌ KHOẢN VAY HIỆN HỮU</h2><table class='data-table'><thead><tr><th class='col-label'>Hạng mục</th><th><div></div></th></tr></thead><tbody><tr class="row row-label"><th style='padding-left:0px'>A. CHI PHÍ VAY TẠI NGÂN HÀNG HIỆN HỮU</th><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Số tiền vay (VND) (*) <span class='extra-label'>VND:</span></th><td class="value-cell">2.000.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Thời gian vay (năm) (*)</th><td class="value-cell">3</td></tr><tr class="row"><th style='padding-left:18px'>Gốc phải trả mỗi kỳ (VND)</th><td class="value-cell readonly">55.555.556</td></tr><tr class="row"><th style='padding-left:18px'>Lãi phải trả mỗi kỳ (VND)</th><td class="value-cell readonly">16.666.667</td></tr><tr class="row"><th style='padding-left:18px'>Lãi suất (%/năm)</th><td class="value-cell">10.00%/năm</td></tr><tr class="row"><th style='padding-left:18px'>Tổng lãi phải trả năm 1 (VND) (1)</th><td class="value-cell readonly">200.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Tổng lãi phải trả đến khi đáo hạn (VND) (2)</th><td class="value-cell readonly">600.000.000</td></tr><tr class="row row-label"><th style='padding-left:0px'>B. TỔNG CHI PHÍ</th><td class="value-cell readonly"></td></tr><tr class="row row-total"><th style='padding-left:18px'>Tổng chi phí năm 1 (VND) = (1)</th><td class="value-cell readonly">200.000.000</td></tr><tr class="row row-total"><th style='padding-left:18px'>Tổng chi phí đến khi đáo hạn (VND) = (2)</th><td class="value-cell readonly">600.000.000</td></tr></tbody></table></section><section class='notes'><h2>Ghi chú</h2><ul><li>Các thông tin giả định có thể điều chỉnh theo tình huống thực tế.</li></ul></section><header><h1>SO SÁNH PHÍ CHUYỂN TIỀN TTQT: GÓI PHÍ &amp; PHÍ LẺ</h1><div class='currency'>Đơn vị: USD</div></header><details class='data-dump'><summary>Dữ liệu thô</summary><table class='data-table'><thead><tr><th>Field</th><th>Value</th><th>Meta</th></tr></thead><tbody><tr><th>amount</th><td>1000000</td><td>source: user, type: number</td></tr><tr><th>fee_rate_pct</th><td>0.22</td><td>source: user, type: number</td></tr><tr><th>fee_amount</th><td>2200.0</td><td>source: calc, type: number, formula: amount * fee_rate_pct / 100</td></tr><tr><th>tx_count</th><td>20</td><td>source: user, type: number</td></tr><tr><th>swift_unit</th><td>8</td><td>source: user, type: number</td></tr><tr><th>swift_total</th><td>160</td><td>source: calc, type: number, formula: tx_count * swift_unit</td></tr><tr><th>grand_total_opt1</th><td>2360.0</td><td>source: calc, type: number, formula: fee_amount + swift_total</td></tr><tr><th>pack6_amount</th><td>1000000</td><td>source: user, type: number</td></tr><tr><th>pack12_amount</th><td>1000000</td><td>source: user, type: number</td></tr><tr><th>pack6_duration</th><td>6</td><td>source: user, type: number</td></tr><tr><th>pack12_duration</th><td>12</td><td>source: user, type: number</td></tr><tr><th>pack6_fee</th><td>1300</td><td>source: user, type: number</td></tr><tr><th>pack12_fee</th><td>1500</td><td>source: user, type: number</td></tr></tbody></table></details><section class='table-block'><h2>PHƯƠNG ÁN 1: THANH TOÁN TỪNG LẦN</h2><table class='data-table'><thead><tr><th class='col-label'>Hạng mục</th><th><div></div></th></tr></thead><tbody><tr class="row row-label"><th style='padding-left:0px'>A. PHÍ CHUYỂN TIỀN</th><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Doanh số chuyển tiền (USD) (*) <span class='extra-label'>USD:</span></th><td class="value-cell">1.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Phí chuyển tiền (USD) (*) (1) <span class='extra-label'>0.22%</span></th><td class="value-cell readonly">2.200</td></tr><tr class="row row-label"><th style='padding-left:0px'>B. ĐIỆN PHÍ</th><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Số lượng giao dịch (*)</th><td class="value-cell">20</td></tr><tr class="row"><th style='padding-left:18px'>Điện phí/ giao dịch (USD) (*)</th><td class="value-cell">8</td></tr><tr class="row"><th style='padding-left:18px'>Điện phí (USD) (2)</th><td class="value-cell readonly">160</td></tr><tr class="row row-label"><th style='padding-left:0px'>C. TỔNG PHÍ</th><td class="value-cell readonly"></td></tr><tr class="row row-total"><th style='padding-left:18px'>Mức phí theo biểu phí (USD) = (1) + (2)</th><td class="value-cell readonly">2.360</td></tr></tbody></table></section><section class='table-block'><h2>PHƯƠNG ÁN 2: THANH TOÁN THEO GÓI PHÍ</h2><table class='data-table'><thead><tr><th class='col-label'>Hạng mục</th><th><div>PACK1000<div class='subtitle'>6 tháng</div></div></th><th><div>PACK1000<div class='subtitle'>12 tháng</div></div></th></tr></thead><tbody><tr class="row row-label"><th style='padding-left:0px'>Gói phí</th><td class="value-cell readonly"></td><td class="value-cell readonly"></td></tr><tr class="row"><th style='padding-left:18px'>Doanh số chuyển tiền (USD) (*) <span class='extra-label'>USD:</span></th><td class="value-cell">1.000.000</td><td class="value-cell">1.000.000</td></tr><tr class="row"><th style='padding-left:18px'>Thời hạn của Gói phí (tháng)</th><td class="value-cell">6</td><td class="value-cell">12</td></tr><tr class="row"><th style='padding-left:18px'>Mức phí theo Gói phí (USD)</th><td class="value-cell">1.300</td><td class="value-cell">1.500</td></tr><tr class="row row-label"><th style='padding-left:0px'>TỔNG PHÍ</th><td class="value-cell readonly"></td><td class="value-cell readonly"></td></tr><tr class="row row-total"><th style='padding-left:18px'>Mức phí theo Gói phí (USD)**</th><td class="value-cell readonly">1.300</td><td class="value-cell readonly">1.500</td></tr></tbody></table><div class='table-note'>(**) Không giới hạn &#x27;Số lượng giao dịch&#x27; và không phát sinh phí khác.</div></section><section class='notes'><h2>Ghi chú</h2><ul><li>Các thông tin giả định có thể điều chỉnh theo tình huống thực tế.</li></ul></section>
+</body>
+</html>

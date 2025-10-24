@@ -2,6 +2,7 @@ import argparse
 import json
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional, Sequence
+from decimal import Decimal, InvalidOperation
 
 from asteval import Interpreter
 
@@ -24,6 +25,7 @@ class TemplateRenderer:
         self.table_ids = set(table_ids) if table_ids is not None else None
         self._config: Optional[Dict[str, Any]] = None
         self._values: Optional[Dict[str, Any]] = None
+        self._field_meta: Dict[str, Dict[str, Any]] = {}
 
     # ── Core orchestration ──────────────────────────────────────────────
     def build_payload(self) -> Dict[str, Any]:
@@ -34,7 +36,6 @@ class TemplateRenderer:
             "title": config.get("title"),
             "currency": config.get("currency"),
             "data": self._build_field_data(config, values),
-            "inputs": self._build_inputs(config, values),
             "tables": self._build_tables(layout, values),
             "notes": layout.get("notes") or config.get("notes", []),
         }
@@ -59,6 +60,7 @@ class TemplateRenderer:
             return self._values
 
         ctx: Dict[str, Any] = dict(self.overrides)
+        self._field_meta = {field["id"]: field for field in fields}
 
         for field in fields:
             if field.get("source", "user") == "user" and field["id"] not in ctx:
@@ -87,13 +89,24 @@ class TemplateRenderer:
 
         if fmt == "money":
             try:
-                num = float(value)
-            except (TypeError, ValueError):
+                num = Decimal(str(value))
+            except (InvalidOperation, TypeError, ValueError):
                 return value
-            num = round(num, 2)
-            if num.is_integer():
-                return int(num)
-            return num
+
+            integral = num == num.to_integral()
+            quant = Decimal("1") if integral else Decimal("0.01")
+            try:
+                num = num.quantize(quant)
+            except InvalidOperation:
+                num = num.quantize(Decimal("0.01"))
+
+            if integral:
+                formatted = f"{num:,.0f}"
+            else:
+                formatted = f"{num:,.2f}"
+
+            formatted = formatted.replace(",", "_").replace(".", ",").replace("_", ".")
+            return formatted
 
         if fmt == "percent":
             try:
@@ -137,25 +150,21 @@ class TemplateRenderer:
     ) -> Dict[str, Any]:
         if "field" in cell_cfg:
             raw = values.get(cell_cfg["field"])
+            editable = cell_cfg.get(
+                "editable",
+                self._field_meta.get(cell_cfg["field"], {}).get(
+                    "editable", self._field_meta.get(cell_cfg["field"], {}).get("source") == "user"
+                ),
+            )
         else:
             raw = cell_cfg.get("value")
+            editable = cell_cfg.get("editable", False)
 
         formatted = self._format_value(raw, cell_cfg.get("format"))
         return {
             "value": formatted,
-            "editable": cell_cfg.get("editable", False),
+            "editable": editable,
         }
-
-    def _build_inputs(
-        self, config: Dict[str, Any], values: Dict[str, Any]
-    ) -> Dict[str, Any]:
-        inputs: Dict[str, Any] = {}
-        for item in config.get("inputs", []):
-            key = item.get("key") or item.get("id")
-            field_id = item.get("field") or item.get("id")
-            value = values.get(field_id)
-            inputs[key] = self._format_value(value, item.get("format"))
-        return inputs
 
     def _build_tables(self, layout: Dict[str, Any], values: Dict[str, Any]) -> Any:
         tables = []
@@ -216,6 +225,7 @@ class TemplateRenderer:
                 "value": values.get(field_id),
                 "source": field.get("source", "user"),
                 "type": field.get("type"),
+                "editable": field.get("editable", field.get("source") == "user"),
             }
             if "default" in field:
                 data[field_id]["default"] = field["default"]

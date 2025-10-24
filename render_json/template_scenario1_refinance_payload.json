@@ -6,111 +6,121 @@
       "value": 2000000000,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 2000000000
     },
     "loan_term_years": {
       "value": 3,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 3
     },
     "acb_rate_pct": {
       "value": 7,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 7
     },
     "existing_rate_pct": {
       "value": 10,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 10
     },
     "penalty_pct": {
       "value": 2,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 2
     },
     "loan_term_months": {
       "value": 36,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "loan_term_years * 12"
     },
     "acb_principal_monthly": {
       "value": 55555556,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount / loan_term_months)"
     },
     "acb_interest_monthly": {
       "value": 11666667,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount * acb_rate_pct / 100 / 12)"
     },
     "acb_interest_year": {
       "value": 140000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount * acb_rate_pct / 100)"
     },
     "acb_interest_total": {
       "value": 420000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(acb_interest_year * loan_term_years)"
     },
     "acb_penalty_fee": {
       "value": 40000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount * penalty_pct / 100)"
     },
     "acb_total_year1": {
       "value": 180000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "acb_interest_year + acb_penalty_fee"
     },
     "acb_total_total": {
       "value": 460000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "acb_interest_total + acb_penalty_fee"
     },
     "existing_principal_monthly": {
       "value": 55555556,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount / loan_term_months)"
     },
     "existing_interest_monthly": {
       "value": 16666667,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount * existing_rate_pct / 100 / 12)"
     },
     "existing_interest_year": {
       "value": 200000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(loan_amount * existing_rate_pct / 100)"
     },
     "existing_interest_total": {
       "value": 600000000,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "round(existing_interest_year * loan_term_years)"
     }
-  },
-  "inputs": {
-    "loan_amount_vnd": 2000000000,
-    "loan_term_years": 3,
-    "acb_rate_pct": "7.00%/năm",
-    "existing_rate_pct": "10.00%/năm",
-    "penalty_pct": "2.00%"
   },
   "tables": [
     {
@@ -129,7 +139,7 @@
               "extra_label": "VND:",
               "cells": {
                 "main": {
-                  "value": 2000000000,
+                  "value": "2.000.000.000",
                   "editable": true
                 }
               }
@@ -149,7 +159,7 @@
               "label": "Gốc phải trả mỗi kỳ (VND)",
               "cells": {
                 "main": {
-                  "value": 55555556,
+                  "value": "55.555.556",
                   "editable": false
                 }
               }
@@ -159,7 +169,7 @@
               "label": "Lãi phải trả mỗi kỳ (VND)",
               "cells": {
                 "main": {
-                  "value": 11666667,
+                  "value": "11.666.667",
                   "editable": false
                 }
               }
@@ -179,7 +189,7 @@
               "label": "Tổng lãi phải trả năm 1 (VND) (1)",
               "cells": {
                 "main": {
-                  "value": 140000000,
+                  "value": "140.000.000",
                   "editable": false
                 }
               }
@@ -189,7 +199,7 @@
               "label": "Tổng lãi phải trả đến khi đáo hạn (VND) (2)",
               "cells": {
                 "main": {
-                  "value": 420000000,
+                  "value": "420.000.000",
                   "editable": false
                 }
               }
@@ -207,7 +217,7 @@
               "label": "Phí phạt trả nợ trước hạn (VND) (3)",
               "cells": {
                 "main": {
-                  "value": 40000000,
+                  "value": "40.000.000",
                   "editable": false
                 }
               }
@@ -226,7 +236,7 @@
               "type": "total",
               "cells": {
                 "main": {
-                  "value": 180000000,
+                  "value": "180.000.000",
                   "editable": false
                 }
               }
@@ -237,7 +247,7 @@
               "type": "total",
               "cells": {
                 "main": {
-                  "value": 460000000,
+                  "value": "460.000.000",
                   "editable": false
                 }
               }
@@ -268,7 +278,7 @@
               "extra_label": "VND:",
               "cells": {
                 "main": {
-                  "value": 2000000000,
+                  "value": "2.000.000.000",
                   "editable": true
                 }
               }
@@ -288,7 +298,7 @@
               "label": "Gốc phải trả mỗi kỳ (VND)",
               "cells": {
                 "main": {
-                  "value": 55555556,
+                  "value": "55.555.556",
                   "editable": false
                 }
               }
@@ -298,7 +308,7 @@
               "label": "Lãi phải trả mỗi kỳ (VND)",
               "cells": {
                 "main": {
-                  "value": 16666667,
+                  "value": "16.666.667",
                   "editable": false
                 }
               }
@@ -318,7 +328,7 @@
               "label": "Tổng lãi phải trả năm 1 (VND) (1)",
               "cells": {
                 "main": {
-                  "value": 200000000,
+                  "value": "200.000.000",
                   "editable": false
                 }
               }
@@ -328,7 +338,7 @@
               "label": "Tổng lãi phải trả đến khi đáo hạn (VND) (2)",
               "cells": {
                 "main": {
-                  "value": 600000000,
+                  "value": "600.000.000",
                   "editable": false
                 }
               }
@@ -347,7 +357,7 @@
               "type": "total",
               "cells": {
                 "main": {
-                  "value": 200000000,
+                  "value": "200.000.000",
                   "editable": false
                 }
               }
@@ -358,7 +368,7 @@
               "type": "total",
               "cells": {
                 "main": {
-                  "value": 600000000,
+                  "value": "600.000.000",
                   "editable": false
                 }
               }

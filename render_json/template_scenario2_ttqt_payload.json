@@ -6,88 +6,93 @@
       "value": 1000000,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 1000000
     },
     "fee_rate_pct": {
       "value": 0.22,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 0.22
     },
     "fee_amount": {
       "value": 2200.0,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "amount * fee_rate_pct / 100"
     },
     "tx_count": {
       "value": 20,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 20
     },
     "swift_unit": {
       "value": 8,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 8
     },
     "swift_total": {
       "value": 160,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "tx_count * swift_unit"
     },
     "grand_total_opt1": {
       "value": 2360.0,
       "source": "calc",
       "type": "number",
+      "editable": false,
       "formula": "fee_amount + swift_total"
     },
     "pack6_amount": {
       "value": 1000000,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 1000000
     },
     "pack12_amount": {
       "value": 1000000,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 1000000
     },
     "pack6_duration": {
       "value": 6,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 6
     },
     "pack12_duration": {
       "value": 12,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 12
     },
     "pack6_fee": {
       "value": 1300,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 1300
     },
     "pack12_fee": {
       "value": 1500,
       "source": "user",
       "type": "number",
+      "editable": true,
       "default": 1500
     }
-  },
-  "inputs": {
-    "amount_usd": 1000000,
-    "fee_rate_pct": "0.22%",
-    "transactions": 20,
-    "swift_per_tx": 8,
-    "pack6_fee_usd": 1300,
-    "pack12_fee_usd": 1500
   },
   "tables": [
     {
@@ -106,7 +111,7 @@
               "extra_label": "USD:",
               "cells": {
                 "main": {
-                  "value": 1000000,
+                  "value": "1.000.000",
                   "editable": true
                 }
               }
@@ -117,7 +122,7 @@
               "extra_label": "0.22%",
               "cells": {
                 "main": {
-                  "value": 2200,
+                  "value": "2.200",
                   "editable": false
                 }
               }
@@ -145,7 +150,7 @@
               "label": "Điện phí/ giao dịch (USD) (*)",
               "cells": {
                 "main": {
-                  "value": 8,
+                  "value": "8",
                   "editable": true
                 }
               }
@@ -155,7 +160,7 @@
               "label": "Điện phí (USD) (2)",
               "cells": {
                 "main": {
-                  "value": 160,
+                  "value": "160",
                   "editable": false
                 }
               }
@@ -174,7 +179,7 @@
               "type": "total",
               "cells": {
                 "main": {
-                  "value": 2360,
+                  "value": "2.360",
                   "editable": false
                 }
               }
@@ -205,11 +210,11 @@
               "extra_label": "USD:",
               "cells": {
                 "pack6": {
-                  "value": 1000000,
+                  "value": "1.000.000",
                   "editable": true
                 },
                 "pack12": {
-                  "value": 1000000,
+                  "value": "1.000.000",
                   "editable": true
                 }
               }
@@ -233,11 +238,11 @@
               "label": "Mức phí theo Gói phí (USD)",
               "cells": {
                 "pack6": {
-                  "value": 1300,
+                  "value": "1.300",
                   "editable": true
                 },
                 "pack12": {
-                  "value": 1500,
+                  "value": "1.500",
                   "editable": true
                 }
               }
@@ -256,11 +261,11 @@
               "type": "total",
               "cells": {
                 "pack6": {
-                  "value": 1300,
+                  "value": "1.300",
                   "editable": false
                 },
                 "pack12": {
-                  "value": 1500,
+                  "value": "1.500",
                   "editable": false
                 }
               }

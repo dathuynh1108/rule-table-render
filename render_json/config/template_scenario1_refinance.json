@@ -6,103 +6,120 @@
       "id": "loan_amount",
       "type": "number",
       "source": "user",
-      "default": 2000000000
+      "default": 2000000000,
+      "editable": true
     },
     {
       "id": "loan_term_years",
       "type": "number",
       "source": "user",
-      "default": 3
+      "default": 3,
+      "editable": true
     },
     {
       "id": "acb_rate_pct",
       "type": "number",
       "source": "user",
-      "default": 7
+      "default": 7,
+      "editable": true
     },
     {
       "id": "existing_rate_pct",
       "type": "number",
       "source": "user",
-      "default": 10
+      "default": 10,
+      "editable": true
     },
     {
       "id": "penalty_pct",
       "type": "number",
       "source": "user",
-      "default": 2
+      "default": 2,
+      "editable": true
     },
     {
       "id": "loan_term_months",
       "type": "number",
       "source": "calc",
-      "formula": "loan_term_years * 12"
+      "formula": "loan_term_years * 12",
+      "editable": false
     },
     {
       "id": "acb_principal_monthly",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount / loan_term_months)"
+      "formula": "round(loan_amount / loan_term_months)",
+      "editable": false
     },
     {
       "id": "acb_interest_monthly",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount * acb_rate_pct / 100 / 12)"
+      "formula": "round(loan_amount * acb_rate_pct / 100 / 12)",
+      "editable": false
     },
     {
       "id": "acb_interest_year",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount * acb_rate_pct / 100)"
+      "formula": "round(loan_amount * acb_rate_pct / 100)",
+      "editable": false
     },
     {
       "id": "acb_interest_total",
       "type": "number",
       "source": "calc",
-      "formula": "round(acb_interest_year * loan_term_years)"
+      "formula": "round(acb_interest_year * loan_term_years)",
+      "editable": false
     },
     {
       "id": "acb_penalty_fee",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount * penalty_pct / 100)"
+      "formula": "round(loan_amount * penalty_pct / 100)",
+      "editable": false
     },
     {
       "id": "acb_total_year1",
       "type": "number",
       "source": "calc",
-      "formula": "acb_interest_year + acb_penalty_fee"
+      "formula": "acb_interest_year + acb_penalty_fee",
+      "editable": false
     },
     {
       "id": "acb_total_total",
       "type": "number",
       "source": "calc",
-      "formula": "acb_interest_total + acb_penalty_fee"
+      "formula": "acb_interest_total + acb_penalty_fee",
+      "editable": false
     },
     {
       "id": "existing_principal_monthly",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount / loan_term_months)"
+      "formula": "round(loan_amount / loan_term_months)",
+      "editable": false
     },
     {
       "id": "existing_interest_monthly",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount * existing_rate_pct / 100 / 12)"
+      "formula": "round(loan_amount * existing_rate_pct / 100 / 12)",
+      "editable": false
     },
     {
       "id": "existing_interest_year",
       "type": "number",
       "source": "calc",
-      "formula": "round(loan_amount * existing_rate_pct / 100)"
+      "formula": "round(loan_amount * existing_rate_pct / 100)",
+      "editable": false
     },
     {
       "id": "existing_interest_total",
       "type": "number",
       "source": "calc",
-      "formula": "round(existing_interest_year * loan_term_years)"
+      "formula": "round(existing_interest_year * loan_term_years)",
+      "editable": false
     }
   ],
   "inputs": [
