@@ -122,38 +122,6 @@
       "editable": false
     }
   ],
-  "inputs": [
-    {
-      "key": "loan_amount_vnd",
-      "label": "Số tiền vay",
-      "field": "loan_amount",
-      "format": "money"
-    },
-    {
-      "key": "loan_term_years",
-      "label": "Thời gian vay (năm)",
-      "field": "loan_term_years",
-      "format": "integer"
-    },
-    {
-      "key": "acb_rate_pct",
-      "label": "Lãi suất ACB",
-      "field": "acb_rate_pct",
-      "format": "percent_per_year"
-    },
-    {
-      "key": "existing_rate_pct",
-      "label": "Lãi suất hiện hữu",
-      "field": "existing_rate_pct",
-      "format": "percent_per_year"
-    },
-    {
-      "key": "penalty_pct",
-      "label": "Phí phạt trả nợ trước hạn",
-      "field": "penalty_pct",
-      "format": "percent"
-    }
-  ],
   "layout": {
     "tables": [
       {

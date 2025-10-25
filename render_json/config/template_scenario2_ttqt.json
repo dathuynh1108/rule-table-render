@@ -94,38 +94,6 @@
       "editable": true
     }
   ],
-  "inputs": [
-    {
-      "key": "amount_usd",
-      "field": "amount",
-      "format": "money"
-    },
-    {
-      "key": "fee_rate_pct",
-      "field": "fee_rate_pct",
-      "format": "percent"
-    },
-    {
-      "key": "transactions",
-      "field": "tx_count",
-      "format": "integer"
-    },
-    {
-      "key": "swift_per_tx",
-      "field": "swift_unit",
-      "format": "money"
-    },
-    {
-      "key": "pack6_fee_usd",
-      "field": "pack6_fee",
-      "format": "money"
-    },
-    {
-      "key": "pack12_fee_usd",
-      "field": "pack12_fee",
-      "format": "money"
-    }
-  ],
   "layout": {
     "tables": [
       {
