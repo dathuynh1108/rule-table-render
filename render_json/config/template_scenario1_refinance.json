@@ -1,6 +1,5 @@
 {
   "title": "DEMO KỊCH BẢN 1 - TƯ VẤN PHƯƠNG ÁN TÁI TÀI TRỢ",
-  "currency": "VND",
   "fields": [
     {
       "id": "loan_amount",
@@ -143,9 +142,6 @@
               {
                 "id": "loan_amount",
                 "label": "Số tiền vay (VND) (*)",
-                "extra_label": {
-                  "text": "VND:"
-                },
                 "cells": {
                   "main": {
                     "field": "loan_amount",
@@ -179,22 +175,15 @@
               {
                 "id": "interest_monthly",
                 "label": "Lãi phải trả mỗi kỳ (VND)",
+                "extra_label": {
+                  "field": "acb_rate_pct",
+                  "format": "percent_per_year"
+                },
                 "cells": {
                   "main": {
                     "field": "acb_interest_monthly",
                     "editable": false,
                     "format": "money"
-                  }
-                }
-              },
-              {
-                "id": "interest_rate",
-                "label": "Lãi suất (%/năm)",
-                "cells": {
-                  "main": {
-                    "field": "acb_rate_pct",
-                    "editable": true,
-                    "format": "percent_per_year"
                   }
                 }
               },
@@ -294,9 +283,6 @@
               {
                 "id": "loan_amount_existing",
                 "label": "Số tiền vay (VND) (*)",
-                "extra_label": {
-                  "text": "VND:"
-                },
                 "cells": {
                   "main": {
                     "field": "loan_amount",
@@ -330,22 +316,15 @@
               {
                 "id": "interest_monthly_existing",
                 "label": "Lãi phải trả mỗi kỳ (VND)",
+                "extra_label": {
+                  "field": "existing_rate_pct",
+                  "format": "percent_per_year"
+                },
                 "cells": {
                   "main": {
                     "field": "existing_interest_monthly",
                     "editable": false,
                     "format": "money"
-                  }
-                }
-              },
-              {
-                "id": "interest_rate_existing",
-                "label": "Lãi suất (%/năm)",
-                "cells": {
-                  "main": {
-                    "field": "existing_rate_pct",
-                    "editable": true,
-                    "format": "percent_per_year"
                   }
                 }
               },

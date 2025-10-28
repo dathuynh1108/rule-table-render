@@ -201,11 +201,18 @@ def _render_notes(notes: Sequence[str]) -> str:
 
 
 def _render_payload(payload: Dict[str, Any]) -> str:
-    sections = [
-        f"<header><h1>{html.escape(payload.get('title', ''))}</h1>"
-        f"<div class='currency'>Đơn vị: {html.escape(payload.get('currency', ''))}</div>"
-        "</header>"
-    ]
+    title = html.escape(payload.get("title", ""))
+    currency = payload.get("currency")
+    if currency:
+        header = (
+            f"<header><h1>{title}</h1>"
+            f"<div class='currency'>Đơn vị: {html.escape(str(currency))}</div>"
+            "</header>"
+        )
+    else:
+        header = f"<header><h1>{title}</h1></header>"
+
+    sections = [header]
 
     sections.append(_render_inputs(payload.get("inputs", {})))
     sections.append(_render_data_snapshot(payload.get("data", {})))

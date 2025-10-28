@@ -1,6 +1,5 @@
 {
   "title": "DEMO KỊCH BẢN 1 - TƯ VẤN PHƯƠNG ÁN TÁI TÀI TRỢ",
-  "currency": "VND",
   "data": {
     "loan_amount": {
       "value": 2000000000,
@@ -136,7 +135,6 @@
             {
               "id": "loan_amount",
               "label": "Số tiền vay (VND) (*)",
-              "extra_label": "VND:",
               "cells": {
                 "main": {
                   "value": "2.000.000.000",
@@ -167,20 +165,11 @@
             {
               "id": "interest_monthly",
               "label": "Lãi phải trả mỗi kỳ (VND)",
+              "extra_label": "7.00%/năm",
               "cells": {
                 "main": {
                   "value": "11.666.667",
                   "editable": false
-                }
-              }
-            },
-            {
-              "id": "interest_rate",
-              "label": "Lãi suất (%/năm)",
-              "cells": {
-                "main": {
-                  "value": "7.00%/năm",
-                  "editable": true
                 }
               }
             },
@@ -275,7 +264,6 @@
             {
               "id": "loan_amount_existing",
               "label": "Số tiền vay (VND) (*)",
-              "extra_label": "VND:",
               "cells": {
                 "main": {
                   "value": "2.000.000.000",
@@ -306,20 +294,11 @@
             {
               "id": "interest_monthly_existing",
               "label": "Lãi phải trả mỗi kỳ (VND)",
+              "extra_label": "10.00%/năm",
               "cells": {
                 "main": {
                   "value": "16.666.667",
                   "editable": false
-                }
-              }
-            },
-            {
-              "id": "interest_rate_existing",
-              "label": "Lãi suất (%/năm)",
-              "cells": {
-                "main": {
-                  "value": "10.00%/năm",
-                  "editable": true
                 }
               }
             },

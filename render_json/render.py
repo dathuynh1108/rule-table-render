@@ -32,13 +32,18 @@ class TemplateRenderer:
         config = self._load_config()
         values = self._compute_values(config.get("fields", []))
         layout = config.get("layout", {})
-        return {
+        payload = {
             "title": config.get("title"),
-            "currency": config.get("currency"),
             "data": self._build_field_data(config, values),
             "tables": self._build_tables(layout, values),
             "notes": layout.get("notes") or config.get("notes", []),
         }
+
+        currency = config.get("currency")
+        if currency is not None:
+            payload["currency"] = currency
+
+        return payload
 
     def write_payload(self, destination: Path) -> Path:
         payload = self.build_payload()

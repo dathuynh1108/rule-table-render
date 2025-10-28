@@ -1,6 +1,5 @@
 {
   "title": "SO SÁNH PHÍ CHUYỂN TIỀN TTQT: GÓI PHÍ & PHÍ LẺ",
-  "currency": "USD",
   "data": {
     "amount": {
       "value": 1000000,
@@ -290,5 +289,6 @@
   ],
   "notes": [
     "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
-  ]
+  ],
+  "currency": "USD"
 }
