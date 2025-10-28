@@ -204,6 +204,7 @@
             {
               "id": "penalty_fee",
               "label": "Phí phạt trả nợ trước hạn (VND) (3)",
+              "extra_label": "2.00%",
               "cells": {
                 "main": {
                   "value": "40.000.000",
@@ -216,13 +217,13 @@
         {
           "id": "hdr_total",
           "label": "C. TỔNG CHI PHÍ",
-          "type": "label",
+          "type": "label_conclusion",
           "cells": {},
           "children": [
             {
               "id": "total_year1",
               "label": "Tổng chi phí năm 1 (VND) = (1) + (3)",
-              "type": "total",
+              "type": "conclusion",
               "cells": {
                 "main": {
                   "value": "180.000.000",
@@ -233,7 +234,7 @@
             {
               "id": "total_to_maturity",
               "label": "Tổng chi phí đến khi đáo hạn (VND) = (2) + (3)",
-              "type": "total",
+              "type": "conclusion",
               "cells": {
                 "main": {
                   "value": "460.000.000",
@@ -327,13 +328,13 @@
         {
           "id": "hdr_total_existing",
           "label": "B. TỔNG CHI PHÍ",
-          "type": "label",
+          "type": "label_conclusion",
           "cells": {},
           "children": [
             {
               "id": "total_year1_existing",
               "label": "Tổng chi phí năm 1 (VND) = (1)",
-              "type": "total",
+              "type": "conclusion",
               "cells": {
                 "main": {
                   "value": "200.000.000",
@@ -344,7 +345,7 @@
             {
               "id": "total_to_maturity_existing",
               "label": "Tổng chi phí đến khi đáo hạn (VND) = (2)",
-              "type": "total",
+              "type": "conclusion",
               "cells": {
                 "main": {
                   "value": "600.000.000",

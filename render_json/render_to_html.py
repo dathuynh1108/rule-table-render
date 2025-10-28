@@ -145,11 +145,17 @@ def _render_row(
     classes = ["row"]
     if row_type == "label":
         classes.append("row-label")
-    if row_type == "total":
+    elif row_type == "label_conclusion":
+        classes.append("row-label-conclusion")
+    if row_type == "conclusion":
+        classes.append("row-conclusion")
+    elif row_type == "total":
         classes.append("row-total")
 
     indent_px = depth * 18
-    label_parts = [html.escape(row.get("label", ""))]
+    base_label = row.get("label", "")
+
+    label_parts = [html.escape(base_label)]
     if row.get("extra_label") is not None:
         label_parts.append(
             f"<span class='extra-label'>{html.escape(str(row['extra_label']))}</span>"
@@ -282,6 +288,16 @@ def _wrap_document(body: str) -> str:
     .row-total {{
       font-weight: 700;
       background: #e1f6ff;
+    }}
+    .row-label-conclusion {{
+      background: #ffe7ba;
+      color: #8a4b00;
+      font-weight: 600;
+    }}
+    .row-conclusion {{
+      font-weight: 700;
+      background: #fff4d6;
+      color: #8a4b00;
     }}
     .value-cell.readonly {{
       color: #425466;

@@ -186,13 +186,13 @@
           },
           {
             "id": "hdr_total_opt1",
-            "type": "label",
+            "type": "label_conclusion",
             "label": "C. TỔNG PHÍ",
             "cells": {},
             "children": [
               {
                 "id": "grand_total_opt1",
-                "type": "total",
+                "type": "conclusion",
                 "label": "Mức phí theo biểu phí (USD) = (1) + (2)",
                 "cells": {
                   "main": {
@@ -283,13 +283,13 @@
           },
           {
             "id": "hdr_total_pkg",
-            "type": "label",
+            "type": "label_conclusion",
             "label": "TỔNG PHÍ",
             "cells": {},
             "children": [
               {
                 "id": "grand_total_pkg",
-                "type": "total",
+                "type": "conclusion",
                 "label": "Mức phí theo Gói phí (USD)**",
                 "cells": {
                   "pack6": {
