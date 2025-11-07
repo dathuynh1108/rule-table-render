@@ -115,9 +115,6 @@
               {
                 "id": "amount",
                 "label": "Doanh số chuyển tiền (USD) (*)",
-                "extra_label": {
-                  "text": "USD:"
-                },
                 "cells": {
                   "main": {
                     "field": "amount",
@@ -231,9 +228,6 @@
               {
                 "id": "pkg_amount",
                 "label": "Doanh số chuyển tiền (USD) (*)",
-                "extra_label": {
-                  "text": "USD:"
-                },
                 "cells": {
                   "pack6": {
                     "field": "pack6_amount",

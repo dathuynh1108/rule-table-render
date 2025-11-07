@@ -24,11 +24,16 @@ def _load_payload(
     overrides: Optional[Dict[str, Any]] = None,
     table_ids: Optional[Iterable[str]] = None,
 ) -> Dict[str, Any]:
+    def _load_config() -> Dict[str, Any]:
+        with open(config_path, "r", encoding="utf8") as handle:
+            return json.load(handle)
+    
     renderer = TemplateRenderer(
-        config_path,
+        _load_config(),
         overrides=overrides,
         table_ids=_ensure_sequence(table_ids),
     )
+    
     return renderer.build_payload()
 
 
@@ -97,7 +102,6 @@ def _render_data_snapshot(data: Dict[str, Dict[str, Any]]) -> str:
 
 def _render_table(table: Dict[str, Any]) -> str:
     col_defs = table.get("col_defs")
-    has_multiple_cols = bool(col_defs)
     headers_html = _render_table_headers(col_defs)
     body_rows = "".join(
         _render_row(row, col_defs, depth=0) for row in table.get("rows", [])

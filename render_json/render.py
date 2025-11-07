@@ -15,21 +15,20 @@ class TemplateRenderer:
 
     def __init__(
         self,
-        config_path: Path,
+        config: Dict[str, Any],
         *,
         overrides: Optional[Dict[str, Any]] = None,
         table_ids: Optional[Iterable[str]] = None,
     ) -> None:
-        self.config_path = config_path
+        self._config = config
         self.overrides = dict(overrides or {})
         self.table_ids = set(table_ids) if table_ids is not None else None
-        self._config: Optional[Dict[str, Any]] = None
         self._values: Optional[Dict[str, Any]] = None
         self._field_meta: Dict[str, Dict[str, Any]] = {}
 
     # ── Core orchestration ──────────────────────────────────────────────
     def build_payload(self) -> Dict[str, Any]:
-        config = self._load_config()
+        config = self._config
         values = self._compute_values(config.get("fields", []))
         layout = config.get("layout", {})
         payload = {
@@ -53,13 +52,6 @@ class TemplateRenderer:
         )
         return destination
 
-    # ── Helpers ────────────────────────────────────────────────────────
-    def _load_config(self) -> Dict[str, Any]:
-        if self._config is None:
-            with open(self.config_path, "r", encoding="utf8") as handle:
-                self._config = json.load(handle)
-        return self._config
-
     def _compute_values(self, fields: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
         if self._values is not None:
             return self._values
@@ -69,7 +61,9 @@ class TemplateRenderer:
 
         for field in fields:
             if field.get("source", "user") == "user" and field["id"] not in ctx:
-                ctx[field["id"]] = field.get("default")
+                ctx[field["id"]] = field.get(
+                    "default"
+                )  # Bind the default for missing user fields
 
         engine = Interpreter()
         for _ in range(8):
@@ -135,6 +129,11 @@ class TemplateRenderer:
 
         return value
 
+    @staticmethod
+    def _display_value(value: Any) -> Any:
+        """Normalise values for display, replacing nulls with a dash."""
+        return "-" if value is None else value
+
     def _resolve_extra_label(
         self, row_cfg: Dict[str, Any], values: Dict[str, Any]
     ) -> Optional[Any]:
@@ -145,10 +144,11 @@ class TemplateRenderer:
         if isinstance(extra, dict):
             if "field" in extra:
                 value = values.get(extra["field"])
-                return self._format_value(value, extra.get("format"))
-            return extra.get("text")
+                formatted = self._format_value(value, extra.get("format"))
+                return self._display_value(formatted)
+            return self._display_value(extra.get("text"))
 
-        return extra
+        return self._display_value(extra)
 
     def _build_cell(
         self, cell_cfg: Dict[str, Any], values: Dict[str, Any]
@@ -158,7 +158,8 @@ class TemplateRenderer:
             editable = cell_cfg.get(
                 "editable",
                 self._field_meta.get(cell_cfg["field"], {}).get(
-                    "editable", self._field_meta.get(cell_cfg["field"], {}).get("source") == "user"
+                    "editable",
+                    self._field_meta.get(cell_cfg["field"], {}).get("source") == "user",
                 ),
             )
         else:
@@ -167,7 +168,7 @@ class TemplateRenderer:
 
         formatted = self._format_value(raw, cell_cfg.get("format"))
         return {
-            "value": formatted,
+            "value": self._display_value(formatted),
             "editable": editable,
         }
 
@@ -196,7 +197,9 @@ class TemplateRenderer:
 
         return tables
 
-    def _build_row(self, row_cfg: Dict[str, Any], values: Dict[str, Any]) -> Dict[str, Any]:
+    def _build_row(
+        self, row_cfg: Dict[str, Any], values: Dict[str, Any]
+    ) -> Dict[str, Any]:
         row = {
             "id": row_cfg["id"],
             "label": row_cfg.get("label", ""),
@@ -216,7 +219,9 @@ class TemplateRenderer:
 
         children_cfg = row_cfg.get("children")
         if children_cfg:
-            row["children"] = [self._build_row(child_cfg, values) for child_cfg in children_cfg]
+            row["children"] = [
+                self._build_row(child_cfg, values) for child_cfg in children_cfg
+            ]
 
         return row
 
@@ -279,7 +284,12 @@ def render_config(
     overrides: Optional[Dict[str, Any]] = None,
     table_ids: Optional[Iterable[str]] = None,
 ) -> Path:
-    renderer = TemplateRenderer(config_path, overrides=overrides, table_ids=table_ids)
+    def _load_config() -> Dict[str, Any]:
+        with open(config_path, "r", encoding="utf8") as handle:
+            return json.load(handle)
+
+    config = _load_config()
+    renderer = TemplateRenderer(config=config, overrides=overrides, table_ids=table_ids)
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / f"{config_path.stem}_payload.json"
     renderer.write_payload(output_path)
