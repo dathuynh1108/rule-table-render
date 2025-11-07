@@ -212,15 +212,8 @@ def _render_notes(notes: Sequence[str]) -> str:
 
 def _render_payload(payload: Dict[str, Any]) -> str:
     title = html.escape(payload.get("title", ""))
-    currency = payload.get("currency")
-    if currency:
-        header = (
-            f"<header><h1>{title}</h1>"
-            f"<div class='currency'>Đơn vị: {html.escape(str(currency))}</div>"
-            "</header>"
-        )
-    else:
-        header = f"<header><h1>{title}</h1></header>"
+    
+    header = f"<header><h1>{title}</h1></header>"
 
     sections = [header]
 
@@ -335,6 +328,7 @@ def _wrap_document(body: str) -> str:
     }}
     details.data-dump {{
       margin-top: 1rem;
+      margin-bottom: 1rem;
     }}
     details.data-dump summary {{
       cursor: pointer;
