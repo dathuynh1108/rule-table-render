@@ -6,6 +6,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Doanh số chuyển tiền (USD)",
       "default": 1000000
     },
     "fee_rate_pct": {
@@ -13,6 +14,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Phí chuyển tiền (% trên doanh số)",
       "default": 0.22
     },
     "fee_amount": {
@@ -27,6 +29,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Số lượng giao dịch",
       "default": 20
     },
     "swift_unit": {
@@ -34,6 +37,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Phí SWIFT mỗi giao dịch (USD)",
       "default": 8
     },
     "swift_total": {
@@ -55,6 +59,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Doanh số chuyển tiền gói 6 tháng (USD)",
       "default": 1000000
     },
     "pack12_amount": {
@@ -62,6 +67,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Doanh số chuyển tiền gói 12 tháng (USD)",
       "default": 1000000
     },
     "pack6_duration": {
@@ -69,6 +75,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Thời hạn gói 6 tháng (tháng)",
       "default": 6
     },
     "pack12_duration": {
@@ -76,6 +83,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Thời hạn gói 12 tháng (tháng)",
       "default": 12
     },
     "pack6_fee": {
@@ -83,6 +91,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Mức phí gói 6 tháng (USD)",
       "default": 1300
     },
     "pack12_fee": {
@@ -90,6 +99,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Mức phí gói 12 tháng (USD)",
       "default": 1500
     }
   },
@@ -107,7 +117,6 @@
             {
               "id": "amount",
               "label": "Doanh số chuyển tiền (USD) (*)",
-              "extra_label": "USD:",
               "cells": {
                 "main": {
                   "value": "1.000.000",
@@ -206,7 +215,6 @@
             {
               "id": "pkg_amount",
               "label": "Doanh số chuyển tiền (USD) (*)",
-              "extra_label": "USD:",
               "cells": {
                 "pack6": {
                   "value": "1.000.000",
@@ -289,6 +297,5 @@
   ],
   "notes": [
     "Các thông tin giả định có thể điều chỉnh theo tình huống thực tế."
-  ],
-  "currency": "USD"
+  ]
 }

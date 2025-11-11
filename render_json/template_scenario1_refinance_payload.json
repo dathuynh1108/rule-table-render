@@ -6,6 +6,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Số tiền vay (VND)",
       "default": 2000000000
     },
     "loan_term_years": {
@@ -13,6 +14,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Thời gian vay (năm)",
       "default": 3
     },
     "acb_rate_pct": {
@@ -20,6 +22,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Lãi suất vay ACB (%/năm)",
       "default": 7
     },
     "existing_rate_pct": {
@@ -27,6 +30,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Lãi suất vay hiện hữu (%/năm)",
       "default": 10
     },
     "penalty_pct": {
@@ -34,6 +38,7 @@
       "source": "user",
       "type": "number",
       "editable": true,
+      "label": "Phí phạt trả nợ trước hạn (%)",
       "default": 2
     },
     "loan_term_months": {
@@ -44,77 +49,77 @@
       "formula": "loan_term_years * 12"
     },
     "acb_principal_monthly": {
-      "value": 55555556,
+      "value": 55555556.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount / loan_term_months)"
     },
     "acb_interest_monthly": {
-      "value": 11666667,
+      "value": 11666667.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount * acb_rate_pct / 100 / 12)"
     },
     "acb_interest_year": {
-      "value": 140000000,
+      "value": 140000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount * acb_rate_pct / 100)"
     },
     "acb_interest_total": {
-      "value": 420000000,
+      "value": 420000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(acb_interest_year * loan_term_years)"
     },
     "acb_penalty_fee": {
-      "value": 40000000,
+      "value": 40000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount * penalty_pct / 100)"
     },
     "acb_total_year1": {
-      "value": 180000000,
+      "value": 180000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "acb_interest_year + acb_penalty_fee"
     },
     "acb_total_total": {
-      "value": 460000000,
+      "value": 460000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "acb_interest_total + acb_penalty_fee"
     },
     "existing_principal_monthly": {
-      "value": 55555556,
+      "value": 55555556.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount / loan_term_months)"
     },
     "existing_interest_monthly": {
-      "value": 16666667,
+      "value": 16666667.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount * existing_rate_pct / 100 / 12)"
     },
     "existing_interest_year": {
-      "value": 200000000,
+      "value": 200000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,
       "formula": "round(loan_amount * existing_rate_pct / 100)"
     },
     "existing_interest_total": {
-      "value": 600000000,
+      "value": 600000000.0,
       "source": "calc",
       "type": "number",
       "editable": false,

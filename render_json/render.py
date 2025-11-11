@@ -237,6 +237,8 @@ class TemplateRenderer:
                 "type": field.get("type"),
                 "editable": field.get("editable", field.get("source") == "user"),
             }
+            if "label" in field:
+                data[field_id]["label"] = field["label"]
             if "default" in field:
                 data[field_id]["default"] = field["default"]
             if "formula" in field:

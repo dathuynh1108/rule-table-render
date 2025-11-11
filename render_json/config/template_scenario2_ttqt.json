@@ -3,6 +3,7 @@
   "fields": [
     {
       "id": "amount",
+      "label": "Doanh số chuyển tiền (USD)",
       "type": "number",
       "source": "user",
       "default": 1000000,
@@ -10,6 +11,7 @@
     },
     {
       "id": "fee_rate_pct",
+      "label": "Phí chuyển tiền (% trên doanh số)",
       "type": "number",
       "source": "user",
       "default": 0.22,
@@ -24,6 +26,7 @@
     },
     {
       "id": "tx_count",
+      "label": "Số lượng giao dịch",
       "type": "number",
       "source": "user",
       "default": 20,
@@ -31,6 +34,7 @@
     },
     {
       "id": "swift_unit",
+      "label": "Phí SWIFT mỗi giao dịch (USD)",
       "type": "number",
       "source": "user",
       "default": 8,
@@ -52,6 +56,7 @@
     },
     {
       "id": "pack6_amount",
+      "label": "Doanh số chuyển tiền gói 6 tháng (USD)",
       "type": "number",
       "source": "user",
       "default": 1000000,
@@ -59,6 +64,7 @@
     },
     {
       "id": "pack12_amount",
+      "label": "Doanh số chuyển tiền gói 12 tháng (USD)",
       "type": "number",
       "source": "user",
       "default": 1000000,
@@ -66,6 +72,7 @@
     },
     {
       "id": "pack6_duration",
+      "label": "Thời hạn gói 6 tháng (tháng)",
       "type": "number",
       "source": "user",
       "default": 6,
@@ -73,6 +80,7 @@
     },
     {
       "id": "pack12_duration",
+      "label": "Thời hạn gói 12 tháng (tháng)",
       "type": "number",
       "source": "user",
       "default": 12,
@@ -80,6 +88,7 @@
     },
     {
       "id": "pack6_fee",
+      "label": "Mức phí gói 6 tháng (USD)",
       "type": "number",
       "source": "user",
       "default": 1300,
@@ -87,6 +96,7 @@
     },
     {
       "id": "pack12_fee",
+      "label": "Mức phí gói 12 tháng (USD)",
       "type": "number",
       "source": "user",
       "default": 1500,
